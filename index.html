@@ -26,7 +26,7 @@
 }
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
-body{margin:0;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--dark);color:#fff;line-height:1.5;overflow-x:hidden;padding-top:56px;padding-bottom:112px}
+body{margin:0;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--dark);color:#fff;line-height:1.5;overflow-x:hidden;padding-top:56px;padding-bottom:138px}
 a{color:inherit;text-decoration:none}
 button,input{font:inherit}
 button{border:0;background:none;color:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
@@ -67,10 +67,10 @@ h2{margin:0;font-size:30px;line-height:1.18;font-weight:900;letter-spacing:0}
 .advantages{padding:10px 20px 28px;background:#08151d}
 .adv-title{margin:0 0 14px;font-size:17px;font-weight:900;text-transform:uppercase;letter-spacing:.03em}
 .adv-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.adv-card{min-height:112px;padding:13px 12px;border-radius:8px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.08)}
+.adv-card{min-height:112px;padding:12px 11px;border-radius:8px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.08)}
 .adv-card svg{width:24px;height:24px;color:#1195d6;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.adv-card h3{margin:10px 0 5px;font-size:13px;line-height:1.25}
-.adv-card p{margin:0;color:rgba(255,255,255,.68);font-size:11px;line-height:1.35}
+.adv-card h3{margin:8px 0 4px;font-size:13px;line-height:1.18}
+.adv-card p{margin:0;color:rgba(255,255,255,.68);font-size:11px;line-height:1.28}
 .promo{margin:0 20px 28px;display:grid;grid-template-columns:1fr 1.18fr;overflow:hidden;border-radius:14px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.05)}
 .promo-time{padding:16px 8px;text-align:center;background:linear-gradient(135deg,#2a8aae,#126992)}
 .promo-time small,.promo-labels{display:block;text-transform:uppercase;font-size:10px;font-weight:800;color:rgba(255,255,255,.78)}
@@ -91,8 +91,10 @@ h2{margin:0;font-size:30px;line-height:1.18;font-weight:900;letter-spacing:0}
 .slide{flex:0 0 74%;scroll-snap-align:center}
 .card-media{display:block;position:relative;min-height:222px;overflow:hidden;border-radius:8px;background:#17222b;box-shadow:0 8px 18px rgba(0,0,0,.14)}
 .card-media img{width:100%;height:126px;object-fit:cover}
+#why .card-media{display:grid;grid-template-rows:1fr auto}
+#why .card-media img{display:block;width:100%;height:176px;object-fit:cover;object-position:center center;background:#17222b}
 .card-media::after{content:"";position:absolute;inset:auto 0 0;height:58%;background:linear-gradient(180deg,rgba(14,29,39,.1),rgba(10,24,34,.98))}
-#why .card-media::after{height:48%;background:linear-gradient(180deg,rgba(14,29,39,0),rgba(10,24,34,.96))}
+#why .card-media::after{height:36%;background:linear-gradient(180deg,rgba(14,29,39,0),rgba(10,24,34,.96))}
 .card-text{position:absolute;z-index:1;left:0;right:0;bottom:0;padding:15px}
 .card-text h3{margin:0 0 8px;color:#fff;font-size:18px;line-height:1.2}
 .card-text p{margin:0;color:rgba(255,255,255,.86);font-size:14px}
@@ -296,18 +298,18 @@ h2{margin:0;font-size:30px;line-height:1.18;font-weight:900;letter-spacing:0}
 .quiz-submit-btn{width:100%;min-height:44px;margin-top:10px;border-radius:9px;background:linear-gradient(180deg,#0997e8,#0875bf);color:#fff;font-size:14px;font-weight:900}
 .quiz-submit-btn:disabled{opacity:.7;cursor:wait}
 .note{margin-top:14px!important;color:#5d6570!important;font-size:14px!important}
-.bbar{position:fixed;left:0;right:0;bottom:0;z-index:60;background:rgba(4,13,20,.98);border-top:1px solid rgba(255,255,255,.08);padding:7px 10px max(9px,env(safe-area-inset-bottom));backdrop-filter:blur(14px)}
-.bbar-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}
-.bbar-btn{min-height:64px;border-radius:8px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:5px;text-align:center;font-size:12px;font-weight:900;line-height:1.2;padding:6px 3px}
-.bbar-btn svg,.bbar-btn img{width:25px;height:25px;object-fit:contain}
+.bbar{position:fixed;left:0;right:0;bottom:0;z-index:60;background:rgba(4,13,20,.98);border-top:1px solid rgba(255,255,255,.08);padding:6px 8px max(7px,env(safe-area-inset-bottom));backdrop-filter:blur(14px)}
+.bbar-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.bbar-btn{min-height:51px;border-radius:7px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:4px;text-align:center;font-size:10px;font-weight:900;line-height:1.15;padding:5px 2px}
+.bbar-btn svg,.bbar-btn img{width:20px;height:20px;object-fit:contain}
 .bbar-call,.bbar-tg{background:linear-gradient(135deg,#05385a,#087ebd)}
-.bbar-call-wide{grid-column:1/-1;min-height:48px;flex-direction:row;gap:10px;font-size:13px;padding:8px 12px}
-.bbar-call-wide svg{width:22px;height:22px}
+.bbar-call-wide{grid-column:1/-1;min-height:74px;flex-direction:row;gap:12px;font-size:25px;padding:14px 16px;border-radius:11px}
+.bbar-call-wide svg{width:32px;height:32px}
 .bbar-form{background:#18232c;color:#fff}
 .bbar-max{background:linear-gradient(135deg,#201052,#5020bb)}
-.bbar-status{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:8px;color:#18d66e;font-size:11px;font-weight:700;white-space:nowrap;overflow:hidden}
-.bbar-status::before{content:"";width:8px;height:8px;border-radius:50%;background:#19dc73;box-shadow:0 0 0 5px rgba(25,220,115,.12);flex:0 0 auto}
-.bbar-status i{width:1px;height:20px;background:rgba(255,255,255,.55)}
+.bbar-status{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:6px;color:#18d66e;font-size:9px;font-weight:700;white-space:nowrap;overflow:hidden}
+.bbar-status::before{content:"";width:6px;height:6px;border-radius:50%;background:#19dc73;box-shadow:0 0 0 4px rgba(25,220,115,.12);flex:0 0 auto}
+.bbar-status i{width:1px;height:16px;background:rgba(255,255,255,.55)}
 #prefooter{background:#f5f7fb;color:#07111b;padding:28px 16px;border-top:1px solid rgba(0,0,0,.08)}
 .prefooter-inner{display:grid;gap:18px;max-width:1120px;margin:0 auto}
 .prefooter-left{display:flex;gap:14px;align-items:flex-start}
@@ -316,7 +318,7 @@ h2{margin:0;font-size:30px;line-height:1.18;font-weight:900;letter-spacing:0}
 .prefooter-right{padding-left:46px}
 .prefooter-contacts-title{margin-bottom:6px;color:#07111b;font-size:14px;font-weight:900}
 .prefooter-contacts-name,.prefooter-contacts-phone{color:#5d6570;font-size:13px;line-height:1.5}
-#footer{display:block;background:#061017;color:rgba(255,255,255,.34);padding:18px 16px 138px}
+#footer{display:block;background:#061017;color:rgba(255,255,255,.34);padding:18px 16px 172px}
 .footer-inner{max-width:1120px;margin:0 auto;display:flex;flex-direction:column;gap:8px}
 .footer-copy,.footer-privacy{font-size:12px;color:rgba(255,255,255,.34)}
 .footer-privacy{text-decoration:none}
@@ -337,7 +339,7 @@ h2{margin:0;font-size:30px;line-height:1.18;font-weight:900;letter-spacing:0}
   .top-phone{font-size:13px}
 }
 @media (min-width:381px) and (max-width:430px){
-  body{padding-top:48px;padding-bottom:94px}
+  body{padding-top:48px;padding-bottom:124px}
   .topbar{height:48px;padding:8px 14px;display:grid;grid-template-columns:auto 1fr auto;gap:10px}
   .brand{font-size:13px}
   .brand-mark{width:28px;height:28px;border-radius:8px}
@@ -349,9 +351,9 @@ h2{margin:0;font-size:30px;line-height:1.18;font-weight:900;letter-spacing:0}
   .hamburger{justify-self:end}
   .drawer{top:48px}
   .hero{min-height:250px;padding:18px 18px 6px;background:#061017}
-  .hero::before{top:0;right:0;bottom:0;width:88%;background:url("images/hero-mobile-v3.png") right 50%/auto 232% no-repeat}
+  .hero::before{top:0;right:0;bottom:0;width:100%;background:url("images/hero-mobile-v3.png") right center/auto 114% no-repeat}
   .hero::after{background:
-    linear-gradient(90deg,#061017 0%,rgba(6,16,23,.88) 34%,rgba(6,16,23,.28) 62%,rgba(6,16,23,0) 100%),
+    linear-gradient(90deg,rgba(6,16,23,.92) 0%,rgba(6,16,23,.82) 28%,rgba(6,16,23,.42) 54%,rgba(6,16,23,.10) 78%,rgba(6,16,23,0) 100%),
     linear-gradient(180deg,rgba(6,16,23,0) 0%,rgba(6,16,23,0) 70%,#061017 100%)}
   .hero h1{font-size:16px;line-height:1.13;max-width:205px}
   .hero h1 span{margin-top:5px}
@@ -361,15 +363,15 @@ h2{margin:0;font-size:30px;line-height:1.18;font-weight:900;letter-spacing:0}
   .advantages{padding:2px 18px 0}
   .adv-title{font-size:14px;margin-bottom:8px}
   .adv-grid{gap:6px}
-  .adv-card{min-height:82px;padding:10px 10px}
-  .adv-card svg{width:19px;height:19px}
-  .adv-card h3{font-size:11px;margin:7px 0 4px}
-  .adv-card p{font-size:9px;line-height:1.32}
+  .adv-card{min-height:82px;padding:8px 8px}
+  .adv-card svg{width:18px;height:18px}
+  .adv-card h3{font-size:12px;margin:5px 0 3px;line-height:1.12}
+  .adv-card p{font-size:10px;line-height:1.2}
   h2{font-size:28px}
   .section-sub{font-size:15px}
   .slide{flex-basis:72%}
-  .bbar-btn{min-height:60px;font-size:11px}
-  .bbar-btn svg,.bbar-btn img{width:24px;height:24px}
+  .bbar-btn{min-height:48px;font-size:9px}
+  .bbar-btn svg,.bbar-btn img{width:19px;height:19px}
   .promo{margin:8px 18px 48px}
   .promo-time{padding:10px 6px}
   .timer{font-size:19px;gap:5px}
@@ -391,9 +393,9 @@ h2{margin:0;font-size:30px;line-height:1.18;font-weight:900;letter-spacing:0}
   .slide{flex-basis:72%}
   .card-media{min-height:172px;border-radius:8px}
   .card-media img{height:94px}
-  #why .card-media{min-height:224px}
-  #why .card-media img{height:132px}
-  #why .card-media::after{height:44%;background:linear-gradient(180deg,rgba(14,29,39,0),rgba(10,24,34,.95))}
+  #why .card-media{min-height:246px}
+  #why .card-media img{height:166px;object-fit:cover;object-position:center center;background:#17222b}
+  #why .card-media::after{height:33%;background:linear-gradient(180deg,rgba(14,29,39,0),rgba(10,24,34,.95))}
   .card-text{padding:11px}
   .card-text h3{font-size:13px;margin-bottom:5px}
   .card-text p{font-size:10px;line-height:1.35}
@@ -474,7 +476,7 @@ h2{margin:0;font-size:30px;line-height:1.18;font-weight:900;letter-spacing:0}
   .note{font-size:10px!important}
 }
 @media (min-width:430px) and (max-width:460px){
-  body{padding-top:56px;padding-bottom:104px}
+  body{padding-top:56px;padding-bottom:132px}
   .topbar{height:56px;padding:9px 16px;display:grid;grid-template-columns:auto 1fr auto;gap:12px}
   .brand{font-size:15px}
   .brand-mark{width:32px;height:32px;border-radius:9px}
@@ -485,9 +487,9 @@ h2{margin:0;font-size:30px;line-height:1.18;font-weight:900;letter-spacing:0}
   .hamburger span{width:26px;height:3px}
   .drawer{top:56px}
   .hero{min-height:330px;padding:24px 22px 8px;background:#061017}
-  .hero::before{top:0;right:0;bottom:0;width:88%;background:url("images/hero-mobile-v3.png") right 48%/auto 220% no-repeat}
+  .hero::before{top:0;right:0;bottom:0;width:100%;background:url("images/hero-mobile-v3.png") right center/auto 114% no-repeat}
   .hero::after{background:
-    linear-gradient(90deg,#061017 0%,rgba(6,16,23,.88) 34%,rgba(6,16,23,.28) 62%,rgba(6,16,23,0) 100%),
+    linear-gradient(90deg,rgba(6,16,23,.92) 0%,rgba(6,16,23,.82) 28%,rgba(6,16,23,.42) 54%,rgba(6,16,23,.10) 78%,rgba(6,16,23,0) 100%),
     linear-gradient(180deg,rgba(6,16,23,0) 0%,rgba(6,16,23,0) 70%,#061017 100%)}
   .hero h1{font-size:18px;line-height:1.13;max-width:230px}
   .hero h1 span{margin-top:6px}
@@ -497,10 +499,10 @@ h2{margin:0;font-size:30px;line-height:1.18;font-weight:900;letter-spacing:0}
   .advantages{padding:4px 22px 0}
   .adv-title{font-size:15px;margin-bottom:9px}
   .adv-grid{gap:7px}
-  .adv-card{min-height:84px;padding:10px 10px}
-  .adv-card svg{width:19px;height:19px}
-  .adv-card h3{font-size:11px;margin:7px 0 4px}
-  .adv-card p{font-size:9px;line-height:1.32}
+  .adv-card{min-height:84px;padding:8px 8px}
+  .adv-card svg{width:18px;height:18px}
+  .adv-card h3{font-size:12px;margin:5px 0 3px;line-height:1.12}
+  .adv-card p{font-size:10px;line-height:1.2}
   .promo{margin:8px 22px 42px}
   .promo-time{padding:10px 6px}
   .timer{font-size:20px;gap:5px}
@@ -521,20 +523,20 @@ h2{margin:0;font-size:30px;line-height:1.18;font-weight:900;letter-spacing:0}
   .slide{flex-basis:70%}
   .card-media{min-height:178px}
   .card-media img{height:96px}
-  #why .card-media{min-height:232px}
-  #why .card-media img{height:136px}
-  #why .card-media::after{height:44%;background:linear-gradient(180deg,rgba(14,29,39,0),rgba(10,24,34,.95))}
+  #why .card-media{min-height:254px}
+  #why .card-media img{height:172px;object-fit:cover;object-position:center center;background:#17222b}
+  #why .card-media::after{height:33%;background:linear-gradient(180deg,rgba(14,29,39,0),rgba(10,24,34,.95))}
   .card-text{padding:11px}
   .card-text h3{font-size:13px;margin-bottom:5px}
   .card-text p{font-size:10px}
   #why .card-text{padding:14px}
   #why .card-text h3{font-size:16px;margin-bottom:7px}
   #why .card-text p{font-size:13px;line-height:1.38}
-  .bbar{padding:7px 10px max(9px,env(safe-area-inset-bottom))}
-  .bbar-grid{gap:7px}
-  .bbar-btn{min-height:62px;font-size:11px}
-  .bbar-btn svg,.bbar-btn img{width:24px;height:24px}
-  .bbar-status{font-size:10px;gap:8px}
+  .bbar{padding:6px 8px max(7px,env(safe-area-inset-bottom))}
+  .bbar-grid{gap:6px}
+  .bbar-btn{min-height:50px;font-size:9px}
+  .bbar-btn svg,.bbar-btn img{width:19px;height:19px}
+  .bbar-status{font-size:8px;gap:6px}
 }
 @media (min-width:768px){body{padding-top:0;padding-bottom:0}}
 </style>
@@ -551,7 +553,7 @@ h2{margin:0;font-size:30px;line-height:1.18;font-weight:900;letter-spacing:0}
     {name:'Елена Н.',av:'ЕН',color:'#5e696f',in1:'Здравствуйте, машина при стирке очень сильно вибрирует, ходит по полу',out:'Здравствуйте, скорее всего амортизаторы или установка. Оставьте адрес, приеду решу проблему',addr:'Пр. Героев Сталинграда, 22, подъезд 2',review:'Максим заменил амортизаторы и проверил крепления. Машина теперь стоит ровно, не скачет',t:['11:00','11:01','11:03','14:20','14:50']}
   ];
   function phone(r,i){
-    return `<article class="max-slide${i===0?' active':''}"><div class="max-phone"><div class="max-island"></div><div class="max-screen"><div class="max-status"><span>21:23</span><span class="max-icons">▮▮▮</span></div><div class="max-head"><span class="max-back">‹</span><div class="max-avatar" style="background:${r.color}">${r.av}</div><div><div class="max-name">${r.name}</div><div class="max-online">в сети</div></div><div class="max-actions"><span>�</span><span>▭</span></div></div><div class="max-chat"><div class="max-bubble max-in">${r.in1}<span class="max-time">${r.t[0]}</span></div><div class="max-bubble max-out">${r.out}<span class="max-time">${r.t[1]} ✓✓</span></div><div class="max-bubble max-in">${r.addr}<span class="max-time">${r.t[2]}</span></div><div class="max-bubble max-out">Напишите, пожалуйста, отзыв о проделанной работе<span class="max-time">${r.t[3]} ✓✓</span></div><div class="max-bubble max-in">${r.review}<span class="max-time">${r.t[4]}</span></div></div><div class="max-input"><span>⌕</span><div class="max-input-field">Сообщение...</div><span>⌾</span></div></div></div></article>`;
+    return `<article class="max-slide${i===0?' active':''}"><div class="max-phone"><div class="max-island"></div><div class="max-screen"><div class="max-status"><span>21:23</span><span class="max-icons">▮▮▮</span></div><div class="max-head"><span class="max-back">‹</span><div class="max-avatar" style="background:${r.color}">${r.av}</div><div><div class="max-name">${r.name}</div><div class="max-online">в сети</div></div><div class="max-actions"><span> </span><span>▭</span></div></div><div class="max-chat"><div class="max-bubble max-in">${r.in1}<span class="max-time">${r.t[0]}</span></div><div class="max-bubble max-out">${r.out}<span class="max-time">${r.t[1]} ✓✓</span></div><div class="max-bubble max-in">${r.addr}<span class="max-time">${r.t[2]}</span></div><div class="max-bubble max-out">Напишите, пожалуйста, отзыв о проделанной работе<span class="max-time">${r.t[3]} ✓✓</span></div><div class="max-bubble max-in">${r.review}<span class="max-time">${r.t[4]}</span></div></div><div class="max-input"><span>⌕</span><div class="max-input-field">Сообщение...</div><span>⌾</span></div></div></div></article>`;
   }
   document.querySelectorAll('[data-max-reviews]').forEach(section=>{
     const track=section.querySelector('[data-max-track]');
@@ -905,7 +907,7 @@ h2{margin:0;font-size:30px;line-height:1.18;font-weight:900;letter-spacing:0}
       <div class="brand-card"><img src="logos/hotpoint_t.png" alt="Hotpoint"></div>
       <div class="brand-card"><span style="font-size:23px;color:#444">gorenje</span></div>
     </div>
-    <div class="brand-more">� другие марки</div>
+    <div class="brand-more">  другие марки</div>
     <div class="dots" style="margin-top:18px"><span class="active"></span><span></span><span></span></div>
   </section>
 
@@ -935,7 +937,7 @@ h2{margin:0;font-size:30px;line-height:1.18;font-weight:900;letter-spacing:0}
       <div class="form-timer" id="contactTimer"><div class="tm"><b>23</b><small>часов</small></div><div class="tm"><b>47</b><small>минут</small></div><div class="tm"><b>04</b><small>секунд</small></div></div>
       <div class="warn">Осталось 3 места на сегодня</div>
       <div class="field"><label for="phone">Телефон *</label><input id="phone" type="tel" inputmode="tel" placeholder="+7 (___) ___-__-__"></div>
-      <div class="field"><label for="name">�мя <span style="color:#7a8490;font-weight:500">(необязательно)</span></label><input id="name" type="text" placeholder="Как вас зовут"></div>
+      <div class="field"><label for="name"> мя <span style="color:#7a8490;font-weight:500">(необязательно)</span></label><input id="name" type="text" placeholder="Как вас зовут"></div>
       <button class="form-submit" id="sendForm">Оставить заявку - получить скидку до 20%</button>
       <p class="note">Нажимая кнопку, вы соглашаетесь на обработку персональных данных. Никакого спама - только связь по ремонту.</p>
     </div>
