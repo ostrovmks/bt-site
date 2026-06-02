@@ -1,0 +1,2815 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ремонт стиральных машин — Максим, частный мастер</title>
+  <meta name="description" content="Частный мастер по ремонту стиральных машин. Выезд за 1 час. Оплата после ремонта. Гарантия 12 месяцев.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    button { color: inherit; font-family: inherit; -webkit-tap-highlight-color: transparent; }
+
+    :root {
+      /* brand palette */
+      --bondi:        #418da9;
+      --bondi-dk:     #33708a;
+      --bondi-light:  #e4f2f7;
+      --slate:        #7c8b96;
+      --gunmetal:     #52575c;
+      --gunmetal-2:   #3a3d41;
+
+      /* surfaces */
+      --bg:           #D4D4D4;   /* neutral grey */
+      --bg-alt:       #C8C8C8;
+      --surface:      #FFFFFF;
+      --border:       #D5DCE0;
+      --border-soft:  #DDE3E7;
+
+      /* text */
+      --text:         #2e3135;   /* dark text */
+      --text-2:       #5e696f;   /* mid-tone */
+      --text-3:       #7c8b96;   /* slate-grey */
+
+      /* accent → bondi-blue */
+      --accent:       #418da9;
+      --accent-dk:    #33708a;
+      --accent-light: #e4f2f7;
+
+      /* semantic */
+      --danger:       #C0392B;
+      --danger-light: #FEF2F2;
+      --success:      #15803D;
+      --success-light:#F0FDF4;
+      --amber:        #D97706;
+      --amber-light:  #FFFBEB;
+
+      --radius-sm:    6px;
+      --radius:       10px;
+      --radius-lg:    16px;
+      --shadow-sm:    0 1px 3px rgba(44,48,51,.08), 0 1px 2px rgba(44,48,51,.05);
+      --shadow:       0 4px 16px rgba(44,48,51,.10), 0 1px 4px rgba(44,48,51,.06);
+      --shadow-lg:    0 12px 40px rgba(44,48,51,.14), 0 2px 8px rgba(44,48,51,.06);
+      --transition:   .2s cubic-bezier(.4,0,.2,1);
+    }
+
+    html { scroll-behavior: smooth; font-size: 16px; overflow-x: hidden; }
+    body { overflow-x: hidden; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Typography ── */
+    h1,h2,h3,h4 { line-height: 1.2; letter-spacing: -.02em; font-weight: 700; }
+    h1 { font-size: clamp(1rem, 5.5vw, 2.7rem); }
+    h2 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); }
+    h3 { font-size: clamp(1.1rem, 2vw, 1.35rem); font-weight: 600; }
+    p  { color: var(--text-2); }
+
+    /* ── Layout ── */
+    .container { max-width: 1320px; margin: 0 auto; padding: 0 2px; }
+    section { padding: 80px 0; }
+
+    /* ── Buttons ── */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      font-family: inherit; font-size: .95rem; font-weight: 600; cursor: pointer;
+      border: none; text-decoration: none; border-radius: var(--radius-sm);
+      transition: all var(--transition); white-space: nowrap;
+    }
+    .btn-primary {
+      background: var(--accent); color: #fff; padding: 14px 28px;
+    }
+    .btn-primary:hover { background: var(--accent-dk); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(65,141,169,.35); }
+    .btn-primary:active { transform: translateY(0); }
+    .btn-outline {
+      background: transparent; color: var(--text); padding: 13px 24px;
+      border: 1.5px solid var(--border); background: var(--surface);
+    }
+    .btn-outline:hover { border-color: var(--text-3); background: var(--bg-alt); }
+    .btn-danger {
+      background: var(--danger); color: #fff; padding: 14px 28px;
+    }
+    .btn-danger:hover { background: #a93226; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(192,57,43,.3); }
+    .btn-lg { padding: 17px 36px; font-size: 1rem; border-radius: 8px; }
+    @media(max-width:600px){ .btn-lg { font-size: .82rem; padding: 15px 16px; white-space: normal; line-height: 1.35; } }
+    .btn-full { width: 100%; }
+
+    /* ── Labels / Badges ── */
+    .badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: .78rem; font-weight: 600; letter-spacing: .04em; text-transform: uppercase;
+      padding: 4px 10px; border-radius: 4px;
+    }
+    .badge-blue   { background: var(--accent-light); color: var(--accent); }
+    .badge-amber  { background: var(--amber-light);  color: var(--amber); }
+    .badge-green  { background: var(--success-light); color: var(--success); }
+    .badge-red    { background: var(--danger-light);  color: var(--danger); }
+
+    /* ── Divider ── */
+    .divider { height: 1px; background: var(--border); }
+
+    /* ────────────────────────────────
+       TOP BAR
+    ──────────────────────────────── */
+    #topbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(20,24,27,.88); backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      transition: box-shadow var(--transition);
+    }
+    #topbar.scrolled { box-shadow: 0 2px 16px rgba(0,0,0,.3); }
+    .topbar-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 12px 2px; gap: 16px; max-width: 1320px; margin: 0 auto; position: relative;
+    }
+    .topbar-left { display: flex; align-items: center; }
+    .topbar-nav { position: absolute; left: 50%; transform: translateX(-50%); }
+    .topbar-brand {
+      display: flex; align-items: center; gap: 8px;
+      font-weight: 700; font-size: 1rem; color: #fff; letter-spacing: -.01em;
+      text-decoration: none;
+    }
+    .topbar-brand-icon {
+      width: 32px; height: 32px; border-radius: 8px;
+      background: var(--bondi); display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .topbar-brand-icon svg { width: 18px; height: 18px; stroke: #fff; fill: none; }
+    .topbar-brand span { color: var(--bondi); }
+    .topbar-nav { display: flex; align-items: center; gap: 24px; }
+    .topbar-nav a {
+      font-size: .85rem; font-weight: 500; color: rgba(255,255,255,.65);
+      text-decoration: none; transition: color var(--transition);
+    }
+    .topbar-nav a:hover { color: #fff; }
+    .topbar-actions { display: flex; align-items: center; gap: 12px; }
+    .topbar-phone {
+      display: flex; align-items: center; gap: 6px;
+      font-weight: 700; font-size: .95rem; color: #fff;
+      text-decoration: none; letter-spacing: -.01em;
+    }
+    .topbar-phone svg { width: 14px; height: 14px; stroke: var(--bondi); fill: none; flex-shrink: 0; }
+    @media(max-width:600px){ .topbar-phone svg { display: none; } }
+    .topbar-phone:hover { color: var(--bondi); }
+    .topbar-cta {
+      background: var(--bondi); color: #fff; padding: 8px 18px;
+      border-radius: var(--radius-sm); font-size: .85rem; font-weight: 600;
+      text-decoration: none; transition: background var(--transition);
+    }
+    .topbar-cta:hover { background: var(--bondi-dk); }
+    /* ── Hamburger button ── */
+    .topbar-hamburger {
+      display: none; flex-direction: column; align-items: center; justify-content: center;
+      gap: 5px; width: 36px; height: 36px; flex-shrink: 0;
+      background: transparent; border: none; cursor: pointer; padding: 4px;
+    }
+    .topbar-hamburger span {
+      display: block; width: 22px; height: 2px;
+      background: #fff; border-radius: 2px; transition: all .25s ease;
+    }
+    .topbar-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .topbar-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .topbar-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ── Mobile nav drawer ── */
+    #mobile-nav {
+      position: fixed; top: 57px; left: 0; right: 0; z-index: 999;
+      background: rgba(20,24,27,.97); backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255,255,255,.1);
+      padding: 0 20px; max-height: 0; overflow: hidden;
+      transition: max-height .3s ease, padding .3s ease;
+    }
+    #mobile-nav.open { max-height: 400px; padding: 8px 20px 24px; }
+    #mobile-nav a {
+      display: flex; align-items: center; gap: 10px;
+      padding: 15px 0; font-size: .95rem; font-weight: 600;
+      color: rgba(255,255,255,.75); text-decoration: none;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+      transition: color var(--transition);
+    }
+    #mobile-nav a:last-child { border-bottom: none; }
+    #mobile-nav a:active, #mobile-nav a:hover { color: var(--bondi); }
+
+    @media(max-width:900px){ .topbar-nav { display: none; } }
+    @media(max-width:600px){
+      .topbar-inner { padding: 10px 16px; gap: 8px; }
+      .topbar-cta { display: none; }
+      /* phone centered absolutely */
+      .topbar-actions { position: absolute; left: 50%; transform: translateX(-50%); pointer-events: none; }
+      .topbar-phone { pointer-events: all; font-size: .85rem; white-space: nowrap; }
+      .topbar-hamburger { display: flex; }
+      /* global container padding */
+      .container { padding: 0 16px; }
+      #hero .container { padding: 0 16px; }
+    }
+
+    /* ────────────────────────────────
+       BLOCK 1 — HERO
+    ──────────────────────────────── */
+    #hero {
+      position: relative; overflow: hidden;
+      min-height: 0; display: flex; align-items: center;
+      padding: 20px 0;
+      background: #000 url('hero.webp') no-repeat right center;
+      background-size: auto 100%;
+    }
+    .hero-bg { display: none; }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(
+        to right,
+        rgba(48,58,64,.95) 0%,
+        rgba(48,58,64,.92) 48%,
+        rgba(48,58,64,.60) 56%,
+        rgba(48,58,64,.15) 63%,
+        rgba(48,58,64,.00) 68%
+      );
+    }
+    #hero .container {
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      align-items: center;
+      margin: 0 auto;
+      padding-left: 6px;
+      padding-right: 6px;
+      max-width: 1320px;
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      padding: 50px 0 0;
+      grid-column: 1;
+    }
+    .hero-eyebrow {
+      display: flex; align-items: center; gap: 8px; margin-bottom: 20px;
+    }
+    .hero-dot {
+      width: 8px; height: 8px; border-radius: 50%; background: #4ade80;
+      box-shadow: 0 0 0 3px rgba(74,222,128,.25);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%,100% { box-shadow: 0 0 0 3px rgba(74,222,128,.25); }
+      50%      { box-shadow: 0 0 0 7px rgba(74,222,128,.08); }
+    }
+    .hero-eyebrow-text { font-size: .85rem; font-weight: 600; color: #4ade80; }
+    .hero-title { margin-bottom: 16px; color: #fff; }
+    .hero-title em { font-style: normal; color: var(--bondi); }
+    .hero-subtitle {
+      font-size: 1rem; color: rgba(255,255,255,.7);
+      margin-bottom: 24px; line-height: 1.6;
+    }
+    .hero-stats-row {
+      display: flex; align-items: stretch; margin-bottom: 36px;
+    }
+    .hero-stat {
+      padding: 0 24px 0 0; margin-right: 24px;
+      border-right: 1px solid rgba(255,255,255,.18); white-space: nowrap;
+    }
+    .hero-stat:last-child { border-right: none; margin-right: 0; }
+    .hero-stat-val {
+      font-size: 1.3rem; font-weight: 800; color: #fff;
+      letter-spacing: -.03em; line-height: 1.1;
+    }
+    .hero-stat-lbl {
+      font-size: .74rem; font-weight: 500; color: rgba(255,255,255,.5); margin-top: 3px;
+    }
+    .hero-cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 24px; }
+    .btn-outline-hero {
+      background: transparent; color: #fff; padding: 14px 28px;
+      border: 1.5px solid rgba(255,255,255,.35); border-radius: var(--radius-sm);
+      font-family: inherit; font-size: 1rem; font-weight: 600; cursor: pointer;
+      text-decoration: none; display: inline-flex; align-items: center;
+      transition: all var(--transition);
+    }
+    .btn-outline-hero:hover { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.6); }
+    .hero-messengers {
+      display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+    }
+    .messenger-btn {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: .83rem; font-weight: 700; text-decoration: none;
+      padding: 7px 14px; border-radius: 100px;
+      transition: opacity var(--transition);
+    }
+    .messenger-btn:hover { opacity: .82; }
+    .messenger-btn-wa  { background: rgba(74,222,128,.15); color: #4ade80; border: 1px solid rgba(74,222,128,.3); }
+    .messenger-btn-tg  { background: rgba(65,141,169,.2); color: #7ec8e3; border: 1px solid rgba(65,141,169,.35); }
+    .messenger-btn-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+    .messenger-btn-wa  .messenger-btn-dot { background: #4ade80; }
+    .messenger-btn-tg  .messenger-btn-dot { background: #7ec8e3; }
+
+    /* ── Hero features grid ── */
+    .hero-features {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 14px 20px; margin-bottom: 24px;
+    }
+    .hero-feature { display: flex; align-items: flex-start; gap: 8px; }
+    .hero-feature-icon {
+      width: 34px; height: 34px; border-radius: 8px; flex-shrink: 0;
+      background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.13);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .hero-feature-icon svg { width: 16px; height: 16px; stroke: var(--bondi); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .hero-feature-title { font-size: .86rem; font-weight: 700; color: #fff; margin-bottom: 2px; line-height: 1.2; }
+    .hero-feature-desc  { font-size: .75rem; color: rgba(255,255,255,.5); line-height: 1.4; }
+
+    /* ── Hero promo block ── */
+    .hero-promo {
+      background: var(--gunmetal); border-radius: 14px;
+      display: flex; align-items: stretch; gap: 0;
+      margin-bottom: 16px; overflow: hidden;
+    }
+    /* Timer section */
+    .hero-promo-timer-block {
+      display: flex; align-items: center; justify-content: center; gap: 4px;
+      background: var(--bondi); padding: 8px 14px; flex-shrink: 0;
+    }
+    .hero-promo-tc {
+      display: flex; flex-direction: column; align-items: center; gap: 2px;
+    }
+    .hero-promo-tc-lbl {
+      font-size: .52rem; font-weight: 700; letter-spacing: .08em;
+      color: rgba(255,255,255,.7); text-transform: uppercase;
+    }
+    .hero-promo-tc-val {
+      font-size: 1.5rem; font-weight: 800; color: #fff;
+      line-height: 1; letter-spacing: -.03em; font-variant-numeric: tabular-nums;
+    }
+    .hero-promo-sep {
+      font-size: 1.2rem; font-weight: 800; color: rgba(255,255,255,.6);
+      line-height: 1; align-self: center; margin-top: 8px;
+    }
+    /* Text section */
+    .hero-promo-text {
+      flex: 1; padding: 8px 14px; display: flex; flex-direction: column; gap: 2px;
+    }
+    .hero-promo-date {
+      font-size: 1rem; font-weight: 700; color: var(--bondi); line-height: 1.2;
+    }
+    .hero-promo-desc {
+      font-size: .95rem; font-weight: 700; color: #fff; line-height: 1.35;
+    }
+    /* CTA buttons group */
+    .hero-promo-btns {
+      display: flex; flex-direction: row; gap: 8px; align-items: center;
+      flex-shrink: 0; padding: 8px 10px;
+    }
+    /* CTA button */
+    .hero-promo-cta {
+      display: flex; align-items: center; gap: 6px;
+      background: var(--bondi); border: none;
+      color: #fff; font-size: .78rem; font-weight: 700;
+      padding: 28px 16px; border-radius: 8px;
+      text-decoration: none; transition: background var(--transition);
+      white-space: nowrap;
+    }
+    .hero-promo-cta:hover { background: var(--bondi-dk); }
+    .hero-promo-cta svg { width: 14px; height: 14px; stroke: #fff; fill: none; flex-shrink: 0; }
+    .hero-promo-cta-outline { background: transparent; border: 1.5px solid rgba(255,255,255,.4); color: #fff; }
+    .hero-promo-cta-outline:hover { background: rgba(255,255,255,.1); }
+    .hero-promo-cta-outline svg { stroke: #fff; }
+    /* Значок скидки в promo */
+    .hero-promo-discount-badge {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      background: #e63946; flex-shrink: 0;
+      padding: 10px 14px; gap: 1px;
+    }
+    .hero-promo-discount-val {
+      font-size: 1.5rem; font-weight: 900; color: #fff;
+      line-height: 1; letter-spacing: -.03em;
+    }
+    .hero-promo-discount-lbl {
+      font-size: .55rem; font-weight: 700; color: rgba(255,255,255,.85);
+      text-transform: uppercase; letter-spacing: .1em;
+    }
+
+    /* hide old elements */
+    .hero-promo-left, .hero-promo-right, .hero-promo-middle,
+    .hero-promo-pct-label, .hero-promo-drow, .hero-promo-discount,
+    .hero-promo-bottom { display: none; }
+
+    @media(max-width:600px) {
+      .hero-promo { flex-wrap: wrap; }
+      .hero-promo-timer-block { width: 100%; justify-content: center; }
+      .hero-promo-text { padding: 8px 16px; }
+      .hero-promo-btns { flex-direction: row; flex-wrap: wrap; padding: 8px 10px; }
+      .hero-promo-cta { justify-content: center; }
+    }
+
+    /* ── Hero CTA buttons ── */
+    .hero-btns { display: flex; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
+    .hero-btn {
+      flex: 1; min-width: 140px; display: flex; align-items: center; justify-content: center;
+      gap: 10px; padding: 7px 22px; border-radius: var(--radius);
+      text-decoration: none; transition: all var(--transition);
+    }
+    .hero-btn svg { width: 20px; height: 20px; flex-shrink: 0; }
+    .hero-btn-texts { display: flex; flex-direction: column; }
+    .hero-btn-texts strong { font-size: .95rem; color: #fff; font-weight: 700; line-height: 1.2; }
+    .hero-btn-texts small  { font-size: .7rem; color: rgba(255,255,255,.65); margin-top: 1px; }
+    .hero-btn-call { background: rgba(60,65,69,.9); border: 1px solid rgba(255,255,255,.15); }
+    .hero-btn-call:hover { background: rgba(80,87,92,.9); }
+    .hero-btn-max  { background: linear-gradient(135deg, #2f80ed 0%, #7b2ff7 100%); }
+    .hero-btn-max:hover  { background: linear-gradient(135deg, #1a6fd4 0%, #6620e0 100%); }
+    .hero-btn-tg  { background: var(--bondi); }
+    .hero-btn-tg:hover  { background: var(--bondi-dk); }
+    .hero-btn-icon { flex: 0 0 auto; padding: 8px 12px; min-width: unset; flex-direction: column; gap: 4px; height: auto; }
+    .hero-btn-icon span { font-size: .65rem; font-weight: 600; color: rgba(255,255,255,.8); letter-spacing: .02em; white-space: nowrap; }
+    .hero-btn-cta { background: #fff; box-shadow: 0 4px 16px rgba(255,255,255,.2); }
+    .hero-btn-cta:hover { background: var(--bondi-light); }
+    .hero-btn-cta strong { color: var(--bondi) !important; }
+    .hero-btn-cta small { color: var(--bondi-dk) !important; }
+    .hero-btn-cta svg { stroke: var(--bondi) !important; }
+
+    /* ── Hero trust line ── */
+    .hero-trust-line {
+      display: flex; align-items: center; gap: 8px;
+      font-size: .82rem; color: #4ade80;
+    }
+    .hero-trust-dot {
+      width: 8px; height: 8px; border-radius: 50%; background: #4ade80; flex-shrink: 0;
+      box-shadow: 0 0 0 3px rgba(74,222,128,.25);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    /* keep timer CSS for contact block */
+    .timer-unit {
+      flex: 1; text-align: center; background: var(--bg-alt);
+      border-radius: var(--radius-sm); padding: 8px 4px;
+    }
+    .timer-val { font-size: 1.5rem; font-weight: 800; color: var(--text); letter-spacing: -.02em; display: block; }
+    .timer-lbl { font-size: .65rem; font-weight: 600; color: var(--text-3); letter-spacing: .04em; text-transform: uppercase; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+    @media(max-width:860px){
+      #hero .container { grid-template-columns: 1fr; padding: 0 16px; }
+      .hero-content { padding: 100px 0 40px; max-width: 100%; width: 100%; box-sizing: border-box; }
+      #hero { background-image: url('hero-mobile.png'); background-position: center top; background-size: cover; }
+      .hero-bg { object-position: center; }
+      .hero-overlay {
+        background: linear-gradient(
+          to bottom,
+          rgba(48,58,64,.92) 0%,
+          rgba(48,58,64,.88) 55%,
+          rgba(48,58,64,.60) 75%,
+          rgba(48,58,64,.30) 100%
+        );
+      }
+      .hero-features { grid-template-columns: repeat(2,1fr); gap: 8px 12px; }
+      .hero-promo { flex-direction: column; flex-wrap: wrap; gap: 0; }
+      .hero-promo-left { min-width: 0; flex: 1; }
+      .hero-promo-middle { display: none; }
+      .hero-promo-right { flex-direction: column; align-items: flex-end; gap: 4px; flex-shrink: 0; }
+      .hero-promo-slots { white-space: nowrap; }
+      .hero-promo-pct { font-size: 1.5rem; }
+      /* icon buttons stay side by side */
+      .hero-btns { flex-direction: row; flex-wrap: wrap; gap: 10px; }
+      .hero-btn { width: auto; min-width: unset; flex: 0 0 auto; }
+    }
+    @media(max-width:480px){
+      .hero-content { padding: 80px 0 32px; }
+      .hero-features { grid-template-columns: 1fr; gap: 10px; }
+      .hero-feature { gap: 8px; }
+      .hero-feature-icon { width: 28px; height: 28px; }
+      .hero-feature-text { font-size: .78rem; }
+      .hero-promo-unit span { font-size: 1.05rem; }
+      .hero-promo-btns { flex-wrap: wrap; width: 100%; }
+      .hero-promo-cta { flex: 1; justify-content: center; }
+    }
+
+    /* ────────────────────────────────
+       STATS STRIP
+    ──────────────────────────────── */
+    #stats {
+      padding: 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      background: var(--bg);
+    }
+    .stats-inner {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      max-width: 1100px; margin: 0 auto;
+    }
+    .stat-item {
+      padding: 28px 24px; text-align: center;
+      border-right: 1px solid var(--border);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-val { font-size: 2rem; font-weight: 800; color: var(--text); letter-spacing: -.03em; }
+    .stat-lbl { font-size: .92rem; color: var(--text-2); margin-top: 4px; line-height: 1.4; }
+    @media(max-width:640px){
+      .stats-inner { grid-template-columns: repeat(2,1fr); }
+      .stat-item:nth-child(2){ border-right:none; }
+      .stat-item:nth-child(3){ border-top:1px solid var(--border); }
+      .stat-item:nth-child(4){ border-right:none; border-top:1px solid var(--border); }
+    }
+
+    /* ────────────────────────────────
+       BLOCK 2 — PROBLEMS + PRICES + QUIZ
+    ──────────────────────────────── */
+    #problems { background: var(--surface); }
+    .section-header { margin-bottom: 48px; }
+    .section-tag { margin-bottom: 10px; }
+    .section-sub { font-size: 1rem; color: var(--text-2); max-width: 560px; margin-top: 10px; }
+
+    .problems-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 24px;
+    }
+    .problem-promo {
+      position: absolute; top: 10px; right: 10px; z-index: 3;
+      background: #e63946; color: #fff;
+      font-size: .62rem; font-weight: 800; letter-spacing: .04em;
+      padding: 4px 9px; border-radius: 6px;
+      box-shadow: 0 2px 8px rgba(0,0,0,.3);
+    }
+    .problem-card {
+      position: relative; border-radius: var(--radius-lg);
+      overflow: hidden; height: 242px;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      cursor: pointer;
+      color: inherit;
+    }
+    .problem-card-bg {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, var(--gunmetal) 0%, var(--gunmetal-2) 100%);
+      background-size: cover; background-position: center;
+      transition: transform .45s cubic-bezier(.4,0,.2,1);
+    }
+    .problem-card:hover .problem-card-bg { transform: scale(1.05); }
+    .problem-card-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top,
+        rgba(48,58,64,.92) 0%,
+        rgba(48,58,64,.45) 55%,
+        rgba(48,58,64,.0) 100%);
+      transition: background var(--transition);
+    }
+    .problem-card:hover .problem-card-overlay {
+      background: linear-gradient(to top,
+        rgba(48,58,64,.97) 0%,
+        rgba(48,58,64,.55) 60%,
+        rgba(48,58,64,.05) 100%);
+    }
+    .problem-card-content {
+      position: relative; z-index: 2; padding: 16px 18px;
+    }
+    .problem-icon { display: none; }
+    .problem-name { font-weight: 700; font-size: .95rem; color: #fff; margin-bottom: 5px; }
+    .problem-price {
+      font-size: 1rem; font-weight: 800; color: #fff;
+      display: flex; align-items: center; gap: 4px;
+    }
+    .problem-note { font-size: .76rem; color: rgba(255,255,255,.78); margin-top: 4px; line-height: 1.35; }
+    .problem-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+    .problem-tag { padding: 4px 7px; border-radius: 999px; background: rgba(255,255,255,.13); color: #fff; font-size: .62rem; font-weight: 800; }
+    .problem-cta { display: inline-flex; margin-top: 11px; padding: 7px 10px; border-radius: 8px; background: #fff; color: var(--accent); font-size: .72rem; font-weight: 800; }
+
+    .price-note-banner {
+      background: var(--success-light); border: 1px solid #BBF7D0;
+      border-radius: var(--radius); padding: 20px 24px; margin-bottom: 48px;
+      display: flex; align-items: flex-start; gap: 16px;
+    }
+    .price-note-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 2px; color: var(--success); display: flex; }
+    .price-note-text h4 { font-size: 1rem; color: var(--success); margin-bottom: 4px; }
+    .price-note-text p  { font-size: .88rem; color: #166534; }
+
+    /* ── Quiz ── */
+    .quiz-wrap {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow);
+    }
+    .quiz-header {
+      background: var(--accent); padding: 24px 28px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .quiz-header h3 { color: #fff; font-size: 1.1rem; }
+    .quiz-progress-text { font-size: .82rem; color: rgba(255,255,255,.7); font-weight: 500; }
+    .quiz-progress-bar {
+      height: 3px; background: rgba(255,255,255,.2);
+    }
+    .quiz-progress-fill {
+      height: 100%; background: #fff; border-radius: 0 2px 2px 0;
+      transition: width .4s cubic-bezier(.4,0,.2,1);
+    }
+    .quiz-body { padding: 32px 28px; }
+    .quiz-question { font-size: 1.05rem; font-weight: 600; color: var(--text); margin-bottom: 20px; }
+    .quiz-options { display: flex; flex-direction: column; gap: 10px; }
+    .quiz-option {
+      display: flex; align-items: center; gap: 12px;
+      padding: 14px 16px; border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm); cursor: pointer;
+      font-size: .92rem; font-weight: 500; color: var(--text);
+      transition: all var(--transition); background: var(--surface);
+    }
+    .quiz-option:hover { border-color: var(--accent); background: var(--accent-light); color: var(--accent); }
+    .quiz-option.selected { border-color: var(--accent); background: var(--accent-light); color: var(--accent); }
+    .quiz-option .opt-check {
+      width: 18px; height: 18px; border-radius: 50%; border: 2px solid var(--border);
+      flex-shrink: 0; transition: all var(--transition);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .quiz-option.selected .opt-check {
+      background: var(--accent); border-color: var(--accent);
+    }
+    .quiz-option.selected .opt-check::after {
+      content: ''; width: 6px; height: 6px; border-radius: 50%; background: #fff;
+    }
+    .quiz-nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 28px; border-top: 1px solid var(--border);
+    }
+    .quiz-back {
+      background: none; border: none; font-family: inherit; font-size: .88rem;
+      color: var(--text-3); cursor: pointer; transition: color var(--transition);
+    }
+    .quiz-back:hover { color: var(--text); }
+
+    /* Quiz result */
+    .quiz-result { padding: 40px 28px; text-align: center; }
+    .quiz-result-icon { font-size: 3rem; margin-bottom: 16px; }
+    .quiz-result h3 { font-size: 1.4rem; margin-bottom: 10px; }
+    .quiz-result p { color: var(--text-2); margin-bottom: 24px; max-width: 400px; margin-left: auto; margin-right: auto; }
+    .quiz-result-detail {
+      background: var(--bg-alt); border-radius: var(--radius); padding: 16px 20px;
+      margin-bottom: 24px; text-align: left;
+    }
+    .quiz-result-detail-row {
+      display: flex; align-items: flex-start; gap: 8px;
+      font-size: .88rem; color: var(--text-2); margin-bottom: 6px;
+    }
+    .quiz-result-detail-row:last-child { margin-bottom: 0; }
+    .quiz-result-price {
+      display: inline-flex; align-items: center; justify-content: center;
+      margin: 4px 0 14px; padding: 10px 16px; border-radius: 999px;
+      background: var(--accent-light); color: var(--accent); font-weight: 800;
+    }
+    .quiz-result-actions { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+    .quiz-result-actions .btn { min-width: 180px; }
+
+    @media(max-width:680px){
+      .problems-grid { grid-template-columns: repeat(2,1fr); }
+    }
+    @media(max-width:440px){
+      .problems-grid { grid-template-columns: 1fr; }
+      .quiz-body, .quiz-nav { padding-left: 20px; padding-right: 20px; }
+    }
+
+    /* ────────────────────────────────
+       BLOCK 3 — PROCESS
+    ──────────────────────────────── */
+    #process { background: var(--bg); }
+    .process-grid {
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 20px;
+    }
+    .process-step {
+      position: relative; overflow: hidden;
+      min-height: 380px;
+      background: #071722; border: 1px solid rgba(255,255,255,.08);
+      border-radius: var(--radius-lg); transition: box-shadow var(--transition);
+      display: flex; flex-direction: column;
+      color: #fff;
+    }
+    .process-step:hover { box-shadow: var(--shadow); }
+    .process-step-img {
+      position: absolute; inset: 0; height: auto; background: #102431;
+      background-size: cover; background-position: center;
+      overflow: hidden; flex-shrink: 0;
+      display: flex; align-items: flex-start; justify-content: flex-start;
+      padding: 46px;
+      color: var(--accent);
+    }
+    .process-step-img::after {
+      content: ""; position: absolute; inset: 0;
+      background:
+        linear-gradient(180deg, rgba(5,17,26,.08) 0%, rgba(5,17,26,.45) 38%, rgba(5,17,26,.94) 100%),
+        linear-gradient(90deg, rgba(5,17,26,.26), rgba(5,17,26,.08));
+    }
+    .process-photo-icon {
+      position: relative; z-index: 1;
+      width: 72px; height: 72px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(255,255,255,.94);
+      box-shadow: 0 18px 34px rgba(0,0,0,.24);
+    }
+    .process-photo-icon svg {
+      width: 36px; height: 36px;
+      stroke: currentColor; fill: none; stroke-width: 1.8;
+      stroke-linecap: round; stroke-linejoin: round;
+    }
+    .process-step-img .process-cover-mark {
+      display: none;
+    }
+    .process-step-body {
+      position: relative; z-index: 1; margin-top: auto;
+      padding: 0 22px 22px; flex: 1;
+      display: flex; flex-direction: column; justify-content: flex-end;
+    }
+    .process-num {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 26px; height: 26px; border-radius: 50%; background: var(--accent);
+      color: #fff; font-size: .74rem; font-weight: 800;
+      margin-bottom: 10px; flex-shrink: 0;
+    }
+    .process-title { font-weight: 800; font-size: 1.08rem; margin-bottom: 8px; color: #fff; }
+    .process-desc { font-size: .86rem; color: rgba(255,255,255,.86); line-height: 1.58; }
+    .process-note {
+      display: flex; align-items: center; gap: 12px;
+      margin-top: 18px; padding: 14px 16px;
+      border-radius: 8px; background: rgba(255,255,255,.1);
+      color: #fff; font-size: .82rem; line-height: 1.35;
+      backdrop-filter: blur(12px);
+    }
+    .process-note svg {
+      width: 28px; height: 28px; flex: 0 0 auto;
+      stroke: currentColor; fill: none; stroke-width: 2;
+      stroke-linecap: round; stroke-linejoin: round;
+    }
+
+    .process-guarantee {
+      margin-top: 36px; background: var(--gunmetal);
+      border-radius: var(--radius-lg); padding: 28px 36px;
+      display: flex; align-items: center; gap: 24px;
+    }
+    .process-guarantee-icon {
+      width: 52px; height: 52px; border-radius: 14px; flex-shrink: 0;
+      background: rgba(255,255,255,.1); display: flex; align-items: center; justify-content: center;
+    }
+    .process-guarantee-icon svg { width: 26px; height: 26px; stroke: #fff; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .process-guarantee-text h3 { color: #fff; font-size: 1.1rem; margin-bottom: 0; }
+
+    @media(max-width:760px){
+      .process-grid { grid-template-columns: repeat(2,1fr); }
+      .process-guarantee { flex-direction: column; text-align: center; padding: 24px 20px; }
+      .process-guarantee-icon { margin: 0 auto; }
+    }
+    @media(max-width:480px){
+      .process-grid { grid-template-columns: 1fr; }
+      .process-step { min-height: 360px; }
+      .process-step-img { padding: 34px; }
+    }
+
+    /* ────────────────────────────────
+       BLOCK 4 — REVIEWS (iPhone)
+    ──────────────────────────────── */
+    #reviews { background:#061017; color:#fff; overflow:hidden; }
+    #reviews .section-label,#reviews .section-sub { color:rgba(255,255,255,.78); }
+    #reviews h2 { color:#fff; }
+    .max-stage{position:relative;margin-top:32px;min-height:650px}
+    .max-track{display:flex;gap:28px;overflow-x:auto;scroll-snap-type:x mandatory;padding:8px calc(50% - 170px) 20px;scrollbar-width:none}
+    .max-track::-webkit-scrollbar{display:none}
+    .max-slide{flex:0 0 340px;scroll-snap-align:center;opacity:.32;transform:scale(.78);transition:opacity .25s ease,transform .25s ease}
+    .max-slide.active{opacity:1;transform:scale(1)}
+    .max-phone{position:relative;padding:10px;border-radius:44px;background:#101114;box-shadow:0 28px 72px rgba(0,0,0,.55),inset 0 0 0 1px rgba(255,255,255,.1)}
+    .max-screen{height:610px;border-radius:34px;background:#071019;overflow:hidden;display:flex;flex-direction:column;border:1px solid rgba(255,255,255,.08)}
+    .max-island{position:absolute;top:22px;left:50%;width:108px;height:28px;border-radius:20px;background:#000;transform:translateX(-50%);z-index:2}
+    .max-status{height:52px;padding:14px 20px 0;display:flex;justify-content:space-between;font-size:.84rem;font-weight:800;color:#fff;background:#071019}
+    .max-icons{letter-spacing:1px}
+    .max-head{padding:9px 15px 12px;display:flex;align-items:center;gap:10px;background:#071019;border-bottom:1px solid rgba(255,255,255,.06)}
+    .max-back,.max-action{font-size:22px;color:rgba(255,255,255,.8);line-height:1}
+    .max-avatar{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:#0b4f6b;color:#fff;font-weight:900}
+    .max-name{font-size:1rem;font-weight:800;line-height:1.1}
+    .max-online{font-size:.72rem;color:#118bd2;margin-top:2px}
+    .max-actions{margin-left:auto;display:flex;gap:12px;color:rgba(255,255,255,.78);font-size:20px}
+    .max-chat{flex:1;padding:15px 13px;display:flex;flex-direction:column;gap:9px;background:#070d18;background-image:radial-gradient(circle at 20% 20%,rgba(79,29,168,.22),transparent 28%),radial-gradient(circle at 80% 48%,rgba(18,142,194,.12),transparent 24%)}
+    .max-bubble{max-width:86%;padding:10px 12px;border-radius:15px;font-size:.82rem;line-height:1.42;box-shadow:0 5px 12px rgba(0,0,0,.12)}
+    .max-in{align-self:flex-start;background:#151d28;color:#fff;border-bottom-left-radius:5px}
+    .max-out{align-self:flex-end;background:linear-gradient(135deg,#4821b7,#2b0e78);color:#fff;border-bottom-right-radius:5px}
+    .max-time{display:block;margin-top:4px;text-align:right;font-size:.64rem;color:rgba(255,255,255,.62)}
+    .max-input{height:54px;padding:9px 13px;display:flex;align-items:center;gap:8px;background:#071019;border-top:1px solid rgba(255,255,255,.07);color:rgba(255,255,255,.7)}
+    .max-input-field{flex:1;border-radius:22px;background:#151d28;padding:9px 14px;font-size:.78rem;color:rgba(255,255,255,.58)}
+    .max-nav{display:flex;justify-content:center;align-items:center;gap:20px;margin-top:12px}
+    .max-arrow{width:54px;height:54px;border-radius:50%;background:rgba(255,255,255,.08);color:#fff;display:grid;place-items:center}
+    .max-arrow:hover{background:rgba(17,60,255,.24)}
+    .max-arrow svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+    .max-dots{display:flex;gap:10px;align-items:center}
+    .max-dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.28);border:0;padding:0;cursor:pointer}
+    .max-dot.active{width:28px;border-radius:999px;background:#113cff}
+    .review-png-stage{margin:32px auto 0;max-width:980px}
+    .review-png-track{display:flex;gap:28px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:calc(50% - 190px);padding:0 calc(50% - 190px) 14px;scrollbar-width:none}
+    .review-png-track::-webkit-scrollbar{display:none}
+    .review-png-slide{flex:0 0 380px;scroll-snap-align:center;opacity:.5;transform:scale(.82);transition:opacity .25s ease,transform .25s ease,filter .25s ease;filter:saturate(1.14) brightness(1.14) contrast(1.05)}
+    .review-png-slide.active{opacity:1;transform:scale(1)} .review-png-slide img{display:block;width:100%;height:auto;border-radius:34px;box-shadow:0 28px 72px rgba(0,0,0,.42);filter:saturate(1.24) brightness(1.26) contrast(1.08)}
+    .review-png-nav{display:flex;justify-content:center;align-items:center;gap:20px;margin-top:16px}
+    .review-png-arrow{width:54px;height:54px;border-radius:50%;background:rgba(255,255,255,.08);color:#fff;display:grid;place-items:center}
+    .review-png-arrow:hover{background:rgba(17,60,255,.24)}
+    .review-png-arrow svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+    .review-png-dots{display:flex;gap:10px;align-items:center;max-width:470px;overflow-x:auto;scrollbar-width:none}
+    .review-png-dots::-webkit-scrollbar{display:none}
+    .review-png-dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.3);border:0;padding:0;cursor:pointer}
+    .review-png-dot.active{width:28px;border-radius:999px;background:#113cff}
+    @media(max-width:720px){
+      .max-stage{min-height:620px}
+      .max-track{padding-left:calc(50% - 155px);padding-right:calc(50% - 155px);gap:20px}
+      .max-slide{flex-basis:310px}
+      .max-screen{height:560px}
+    }
+    .phones-section { position:relative; }
+    .phones-carousel { position:relative; min-height:600px; }
+    .phones-group { display:none; justify-content:center; gap:28px; align-items:flex-start; }
+    .phones-group.active { display:flex; }
+
+    /* iPhone frame */
+    .iphone-wrap { flex-shrink:0; }
+    .iphone-frame {
+      width: 280px; height: 580px;
+      background: linear-gradient(160deg, #4e4e50 0%, #2c2c2e 50%, #1c1c1e 100%);
+      border-radius: 44px; padding: 7px; position: relative;
+      box-shadow: 0 0 0 1px rgba(255,255,255,.12), inset 0 0 0 1px rgba(255,255,255,.05),
+                  0 50px 100px rgba(0,0,0,.6), 0 15px 40px rgba(0,0,0,.4);
+    }
+    .iphone-btn-power { position:absolute; right:-2px; top:140px; width:2px; height:60px; background:#3c3c3e; border-radius:0 2px 2px 0; }
+    .iphone-btn-action { position:absolute; left:-2px; top:70px; width:2px; height:24px; background:#3c3c3e; border-radius:2px 0 0 2px; }
+    .iphone-btn-vol1  { position:absolute; left:-2px; top:114px; width:2px; height:38px; background:#3c3c3e; border-radius:2px 0 0 2px; }
+    .iphone-btn-vol2  { position:absolute; left:-2px; top:164px; width:2px; height:38px; background:#3c3c3e; border-radius:2px 0 0 2px; }
+    .iphone-usbc { position:absolute; bottom:11px; left:50%; transform:translateX(-50%); width:40px; height:5px; background:#0a0a0a; border-radius:3px; }
+    .iphone-island { position:absolute; top:10px; left:50%; transform:translateX(-50%); width:100px; height:28px; background:#000; border-radius:20px; z-index:10; box-shadow:0 0 0 1px rgba(255,255,255,.07); }
+    .iphone-time { font-size:.78rem; font-weight:700; color:#fff; }
+    .iphone-icons { display:flex; align-items:center; gap:5px; }
+    .iphone-icons svg { width:14px; height:14px; fill:#fff; }
+
+    /* MAX app light theme */
+    .iphone-screen { width:100%; height:100%; background:#f0f4f7; border-radius:38px; overflow:hidden; display:flex; flex-direction:column; position:relative; }
+    .iphone-statusbar { display:flex; align-items:center; justify-content:space-between; padding:13px 18px 4px; flex-shrink:0; background:#2688EB; }
+    .iphone-time { color:#fff !important; }
+    .iphone-icons svg { fill:#fff !important; }
+    .iphone-chat-header { background:#2688EB; padding:8px 12px 10px 8px; display:flex; align-items:center; gap:8px; flex-shrink:0; }
+    .tg-back { width:22px; height:22px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .tg-back svg { width:18px; height:18px; stroke:rgba(255,255,255,.85); fill:none; stroke-width:2.5; stroke-linecap:round; stroke-linejoin:round; }
+    .wa-av { width:34px; height:34px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:.65rem; font-weight:700; color:#fff; flex-shrink:0; }
+    .wa-nm { font-size:.84rem; font-weight:600; color:#fff; line-height:1.2; }
+    .wa-st { font-size:.66rem; color:rgba(255,255,255,.75); }
+
+    /* Chat body */
+    .iphone-chat-body { flex:1; overflow-y:auto; background:#f0f4f7; padding:10px 8px; display:flex; flex-direction:column; gap:6px; }
+    .iphone-chat-body::-webkit-scrollbar { width:2px; }
+    .iphone-chat-body::-webkit-scrollbar-thumb { background:rgba(0,0,0,.1); border-radius:1px; }
+    .wa-date-sep { text-align:center; font-size:.62rem; color:rgba(0,0,0,.4); background:rgba(0,0,0,.08); border-radius:10px; padding:3px 10px; align-self:center; }
+    .wa-in  { align-self:flex-start; background:#fff; color:#1c1c1e; border-radius:2px 12px 12px 12px; padding:8px 11px; font-size:.76rem; line-height:1.5; max-width:86%; box-shadow:0 1px 2px rgba(0,0,0,.08); }
+    .wa-out { align-self:flex-end;   background:#2688EB; color:#fff; border-radius:12px 2px 12px 12px; padding:8px 11px; font-size:.76rem; line-height:1.5; max-width:86%; }
+    .wa-in .wa-t  { font-size:.58rem; color:rgba(0,0,0,.35); display:block; text-align:right; margin-top:2px; }
+    .wa-out .wa-t { font-size:.58rem; color:rgba(255,255,255,.6); display:block; text-align:right; margin-top:2px; }
+    .wa-t { font-size:.58rem; display:block; text-align:right; margin-top:2px; }
+
+    /* Input bar */
+    .iphone-input { background:#fff; padding:8px 10px; display:flex; align-items:center; gap:8px; flex-shrink:0; border-top:1px solid #e5e7eb; }
+    .iphone-input-field { flex:1; background:#f0f4f7; border-radius:22px; padding:6px 14px; font-size:.72rem; color:rgba(0,0,0,.35); border:1px solid #e5e7eb; }
+
+    /* Navigation */
+    .phone-nav { display:flex; align-items:center; justify-content:center; gap:20px; margin-top:32px; }
+    .phone-nav-btn { width:40px; height:40px; border-radius:50%; border:1.5px solid var(--border); background:transparent; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all var(--transition); color:var(--text-2); }
+    .phone-nav-btn:hover { border-color:var(--bondi); color:var(--bondi); }
+    .phone-nav-btn svg { width:16px; height:16px; stroke:currentColor; fill:none; stroke-width:2; stroke-linecap:round; }
+    .phone-dots { display:flex; gap:8px; }
+    .phone-dot { width:8px; height:8px; border-radius:50%; background:var(--border); cursor:pointer; transition:all .3s; border:none; padding:0; }
+    .phone-dot.active { background:var(--bondi); width:24px; border-radius:4px; }
+
+    @media(max-width:960px){
+      .phones-carousel { min-height:480px; }
+      .iphone-frame { width:220px; height:460px; border-radius:40px; }
+      .iphone-screen { border-radius:30px; }
+      .iphone-island { width:82px; height:22px; }
+      .phones-group { gap:16px; }
+    }
+    @media(max-width:720px){
+      .phones-carousel { min-height:640px; }
+      .phones-group { flex-direction:column; align-items:center; }
+      .iphone-wrap:not(:first-child) { display:none; }
+      .iphone-frame {
+        width: min(320px, calc(100vw - 48px));
+        height: min(640px, calc((100vw - 48px) * 2));
+        border-radius: 44px;
+      }
+      .iphone-screen { border-radius: 38px; }
+      .iphone-island { width: 100px; height: 28px; }
+    }
+
+    /* ────────────────────────────────
+       BLOCK 5 — BRANDS
+    ──────────────────────────────── */
+    #brands { background: var(--bg); padding: 80px 0; }
+    .brands-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .brand-card {
+      background: #fff; border: 1px solid var(--border); border-radius: 12px;
+      padding: 24px 16px; display: flex; align-items: center; justify-content: center;
+      min-height: 80px; transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+    .brand-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.08); border-color: rgba(65,141,169,.3); }
+    .brand-card svg { max-height: 36px; max-width: 120px; width: 100%; transition: opacity .2s; }
+    .brand-card:hover svg { opacity: .8; }
+    .brand-card img { max-height: 52px; max-width: 85%; object-fit: contain; }
+    .brand-more { text-align: center; margin-top: 20px; color: var(--text-3); font-size: .92rem; }
+
+    @media(max-width:600px){
+      .brands-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .brand-card { min-height: 64px; padding: 16px 12px; }
+      .brand-card img { max-height: 28px; max-width: 90px; }
+    }
+
+    /* ────────────────────────────────
+       BLOCK 6 — FAQ
+    ──────────────────────────────── */
+    #faq { background: var(--surface); padding: 80px 0; }
+    .faq-big-list { margin-top: 0; }
+    .faq-big-item { border-top: 1px solid var(--border); }
+    .faq-big-list .faq-big-item:last-child { border-bottom: 1px solid var(--border); }
+    .faq-big-btn {
+      width: 100%; background: none; border: none; cursor: pointer;
+      padding: 28px 0; display: grid;
+      grid-template-columns: 56px 1fr 40px;
+      align-items: center; gap: 0; text-align: left;
+      transition: color var(--transition);
+      -webkit-tap-highlight-color: transparent;
+    }
+    .faq-big-btn:hover .faq-big-q { color: var(--bondi); }
+    .faq-big-n { font-size: .72rem; font-weight: 700; color: var(--text-3); letter-spacing: .06em; }
+    .faq-big-q { font-size: clamp(1rem, 1.6vw, 1.25rem); font-weight: 700; color: var(--text-1); line-height: 1.3; transition: color var(--transition); -webkit-text-fill-color: var(--text-1); }
+    .faq-big-item.open .faq-big-q { color: var(--bondi); }
+    .faq-big-arrow { width: 32px; height: 32px; border-radius: 50%; border: 1.5px solid var(--border); display: flex; align-items: center; justify-content: center; margin-left: auto; flex-shrink: 0; transition: all .3s; }
+    .faq-big-arrow svg { width: 14px; height: 14px; stroke: var(--text-3); fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; transition: transform .35s cubic-bezier(.22,1,.36,1); }
+    .faq-big-item.open .faq-big-arrow { border-color: var(--bondi); background: var(--bondi); }
+    .faq-big-item.open .faq-big-arrow svg { stroke: #fff; transform: rotate(45deg); }
+    .faq-big-body { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .4s cubic-bezier(.22,1,.36,1); }
+    .faq-big-item.open .faq-big-body { grid-template-rows: 1fr; }
+    .faq-big-inner { overflow: hidden; }
+    .faq-big-a { padding: 0 0 28px; padding-left: 56px; font-size: .95rem; color: var(--text-2); line-height: 1.8; max-width: 640px; }
+    .faq-big-a strong { color: var(--text-1); }
+
+    @media(max-width:600px){
+      .faq-big-btn { grid-template-columns: 36px 1fr 36px; padding: 20px 0; }
+      .faq-big-a { padding-left: 36px; }
+    }
+
+    /* ────────────────────────────────
+       BLOCK 6 — FINAL CTA
+    ──────────────────────────────── */
+    #contact {
+      background: var(--bg); padding: 80px 0;
+    }
+
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr minmax(0, 400px); gap: 48px; align-items: stretch;
+    }
+    .contact-map-wrap { display: flex; flex-direction: column; gap: 14px; }
+    .contact-map-title { font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 800; color: var(--text); flex-shrink: 0; }
+    .contact-map-iframe { width: 100%; flex: 1; min-height: 300px; border-radius: 16px; border: none; display: block; }
+    .contact-right-col { display: flex; flex-direction: column; padding-top: 61px; box-sizing: border-box; }
+    .contact-right-col .contact-form-card { flex: 1; box-sizing: border-box; }
+    .contact-info-card {
+      flex-shrink: 0;
+      display: flex; align-items: center; gap: 10px;
+      background: linear-gradient(135deg, #1a4f63 0%, #1d6680 100%);
+      border-radius: 14px; padding: 14px 18px;
+    }
+    .contact-info-title {
+      font-size: .72rem; font-weight: 700; letter-spacing: .08em;
+      text-transform: uppercase; color: rgba(255,255,255,.5);
+      white-space: nowrap; margin-right: 4px;
+    }
+    .contact-info-row {
+      flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 8px 10px; border-radius: 10px;
+      background: rgba(255,255,255,.1); text-decoration: none;
+      transition: background .2s;
+    }
+    .contact-info-row:hover { background: rgba(255,255,255,.18); }
+    .contact-info-icon {
+      width: 26px; height: 26px; border-radius: 50%; flex-shrink: 0;
+      background: rgba(255,255,255,.12); display: flex; align-items: center; justify-content: center;
+      color: #fff;
+    }
+    .contact-info-label { display: none; }
+    .contact-info-value { font-size: .82rem; font-weight: 700; color: #fff; white-space: nowrap; }
+    .contact-promises { display: flex; flex-direction: column; gap: 20px; }
+    .contact-promise {
+      display: flex; align-items: flex-start; gap: 14px;
+    }
+    .promise-icon {
+      width: 36px; height: 36px; border-radius: 8px; flex-shrink: 0;
+      background: var(--surface); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; flex-shrink: 0; margin-top: 2px;
+    }
+    .promise-text h4 { font-size: .95rem; font-weight: 600; color: var(--text); margin-bottom: 3px; }
+    .promise-text p  { font-size: .84rem; color: var(--text-2); line-height: 1.55; }
+
+    .contact-alts { margin-top: 36px; }
+    .contact-alts-label { font-size: .78rem; color: var(--text-3); margin-bottom: 10px; text-transform: uppercase; letter-spacing: .05em; font-weight: 600; }
+    .contact-alts-row { display: flex; gap: 10px; flex-wrap: wrap; }
+    .contact-alt-btn {
+      display: flex; align-items: center; gap: 8px;
+      padding: 11px 18px; border-radius: var(--radius-sm);
+      border: 1.5px solid var(--border); background: var(--surface);
+      color: var(--text); font-size: .88rem; font-weight: 600; text-decoration: none;
+      transition: all var(--transition);
+    }
+    .contact-alt-btn:hover { border-color: var(--text-3); background: var(--bg-alt); }
+
+    /* Contact form card */
+    .contact-form-card {
+      background: var(--surface); border-radius: var(--radius-lg);
+      padding: 20px; box-shadow: var(--shadow-lg);
+    }
+    .contact-form-tag {
+      font-size: .75rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase;
+      color: var(--danger); margin-bottom: 6px; display: flex; align-items: center; gap: 6px;
+    }
+    .contact-form-card h3 { font-size: 1.15rem; margin-bottom: 4px; }
+    .contact-form-card .sub { font-size: .85rem; color: var(--text-2); margin-bottom: 12px; }
+    .contact-timer-wrap { margin-bottom: 12px; }
+    .contact-timer-label { font-size: .78rem; color: var(--text-3); margin-bottom: 6px; }
+    .contact-timer { display: flex; gap: 8px; }
+    .contact-timer .timer-unit { background: var(--bg-alt); flex: 1; }
+    .form-field { margin-bottom: 12px; }
+    .hp-field { position: absolute; left: -9999px; opacity: 0; height: 0; overflow: hidden; }
+    .form-field label { font-size: .8rem; font-weight: 600; color: var(--text-2); display: block; margin-bottom: 5px; }
+    .form-field input {
+      width: 100%; padding: 13px 14px; border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm); font-family: inherit; font-size: .92rem;
+      color: var(--text); background: var(--bg);
+      transition: border-color var(--transition);
+    }
+    .form-field input:focus { outline: none; border-color: var(--accent); background: var(--surface); }
+    .form-field input::placeholder { color: var(--text-3); }
+    .form-required { color: var(--danger); }
+    .contact-form-note { font-size: .73rem; color: var(--text-3); margin-top: 8px; line-height: 1.55; }
+    .slots-warn {
+      background: var(--amber-light); border: 1px solid #FDE68A;
+      border-radius: var(--radius-sm); padding: 10px 14px;
+      font-size: .8rem; font-weight: 600; color: var(--amber); margin-bottom: 14px;
+      display: flex; align-items: center; gap: 6px;
+    }
+
+    /* Form success */
+    .form-success { display: none; text-align: center; padding: 20px 0; }
+    .form-success-icon { font-size: 2.5rem; margin-bottom: 14px; }
+    .form-success h3 { margin-bottom: 8px; }
+    .form-success p { font-size: .9rem; color: var(--text-2); }
+    .lead-modal { position: fixed; inset: 0; z-index: 2000; display: none; align-items: center; justify-content: center; padding: 24px; background: rgba(9, 18, 25, .68); backdrop-filter: blur(10px); }
+    .lead-modal.open { display: flex; }
+    .lead-dialog { position: relative; width: min(100%, 460px); max-height: calc(100vh - 48px); overflow: auto; border-radius: 18px; background: var(--surface); box-shadow: 0 28px 70px rgba(0,0,0,.28); }
+    .lead-close { position: absolute; top: 12px; right: 12px; width: 38px; height: 38px; border: 0; border-radius: 50%; background: var(--surface-2); color: var(--text); font-size: 28px; line-height: 1; cursor: pointer; }
+    .lead-body { padding: 30px 26px 24px; }
+    .lead-body h3 { margin: 0 46px 8px 0; font-size: 1.5rem; }
+    .lead-body p { margin: 0 0 18px; color: var(--text-2); line-height: 1.55; }
+    .lead-field { display: grid; gap: 7px; margin-bottom: 13px; }
+    .lead-field label { font-size: .86rem; font-weight: 700; color: var(--text); }
+    .lead-field input, .lead-field textarea { width: 100%; border: 1px solid #dce4ea; border-radius: 10px; background: var(--surface-2); color: var(--text); padding: 13px 14px; font: inherit; outline: none; box-sizing: border-box; }
+    .lead-field textarea { min-height: 92px; resize: vertical; }
+    .lead-field input:focus, .lead-field textarea:focus { border-color: var(--accent); background: var(--surface); }
+    .lead-error { display: none; margin: -2px 0 12px; color: var(--danger); font-size: .84rem; font-weight: 700; }
+    .lead-error.show { display: block; }
+    .lead-success { display: none; margin-top: 12px; padding: 12px; border-radius: 10px; background: #eaf8ef; color: #11723a; font-weight: 700; line-height: 1.4; }
+    .lead-success.show { display: block; }
+    .lead-submit { width: 100%; min-height: 52px; border: 0; border-radius: 10px; background: var(--danger); color: #fff; font-weight: 800; font-size: 1rem; cursor: pointer; }
+    .lead-submit:disabled { opacity: .7; cursor: wait; }
+    .contact-choice-body { padding: 30px 26px 24px; text-align: center; }
+    .contact-choice-body h3 { margin: 0 40px 8px; font-size: 1.5rem; }
+    .contact-choice-body p { margin: 0 0 18px; color: var(--text-2); line-height: 1.55; }
+    .contact-choice-number { display: inline-flex; align-items: center; justify-content: center; margin-bottom: 18px; padding: 12px 18px; border-radius: 12px; background: var(--surface-2); color: var(--text); font-size: 1.35rem; font-weight: 900; text-decoration: none; }
+    .contact-choice-actions { display: grid; gap: 10px; }
+    .contact-choice-actions a { min-height: 50px; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 800; text-decoration: none; }
+    .contact-choice-call { background: var(--accent); }
+    .contact-choice-max { background: linear-gradient(135deg, #2f80ed 0%, #7b2ff7 100%); }
+    .contact-choice-tg { background: var(--bondi); }
+    .contact-choice-lead { background: var(--text); }
+    .promo-choice .contact-choice-body { text-align: left; }
+    .promo-choice .contact-choice-actions { margin-top: 16px; }
+    .quiz-phone-wrap { display: grid; gap: 8px; max-width: 380px; margin: 18px auto 0; text-align: left; }
+    .quiz-phone-wrap label { font-size: .86rem; font-weight: 700; color: var(--text); }
+    .quiz-phone-wrap input { width: 100%; border: 1px solid #dce4ea; border-radius: 10px; background: var(--surface-2); color: var(--text); padding: 13px 14px; font: inherit; outline: none; box-sizing: border-box; }
+    .quiz-submit-btn { min-height: 46px; border: 0; border-radius: 10px; background: var(--accent); color: #fff; font-weight: 800; cursor: pointer; }
+    .quiz-submit-btn:disabled { opacity: .7; cursor: wait; }
+
+    @media(max-width:860px){
+      .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+      .contact-grid > div { min-width: 0; width: 100%; }
+      .contact-form-card { width: 100%; box-sizing: border-box; padding: 20px; }
+      .contact-promises { width: 100%; }
+      .contact-promise { gap: 10px; }
+      .contact-timer { gap: 6px; }
+      .contact-alts-row { flex-wrap: wrap; }
+      .contact-alt-btn { flex: 1 1 auto; justify-content: center; font-size: .8rem; padding: 9px 12px; }
+      .slots-warn { font-size: .75rem; }
+    }
+    @media(max-width:600px){
+      /* contact info card: вертикальный стек */
+      .contact-info-card {
+        flex-direction: column; align-items: stretch;
+        gap: 8px; padding: 12px 14px;
+      }
+      .contact-info-title { margin-right: 0; margin-bottom: 2px; }
+      .contact-info-row { justify-content: flex-start; }
+    }
+
+    /* ────────────────────────────────
+       FOOTER
+    ──────────────────────────────── */
+    #footer {
+      background: var(--gunmetal-2); padding: 24px 0;
+    }
+    .footer-inner {
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      flex-wrap: wrap;
+    }
+    .footer-copy { font-size: .78rem; color: rgba(255,255,255,.3); }
+    .footer-privacy { font-size: .78rem; color: rgba(255,255,255,.25); text-decoration: none; }
+    .footer-privacy:hover { color: rgba(255,255,255,.5); }
+
+    /* ────────────────────────────────
+       UTILS
+    ──────────────────────────────── */
+    .hidden { display: none !important; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
+
+    /* ── Pre-footer ── */
+    #prefooter { background: var(--bg); padding: 40px 0; border-top: 1px solid rgba(0,0,0,.08); }
+    .prefooter-inner { display: flex; align-items: center; justify-content: space-between; gap: 40px; }
+    .prefooter-left { display: flex; align-items: flex-start; gap: 20px; flex: 1; }
+    .prefooter-left p { font-size: .82rem; color: var(--slate); line-height: 1.7; margin: 0; }
+    .prefooter-right { text-align: right; flex-shrink: 0; }
+    .prefooter-contacts-title { font-size: .85rem; font-weight: 800; color: var(--text); margin-bottom: 6px; }
+    .prefooter-contacts-name { font-size: .82rem; color: var(--slate); margin-bottom: 4px; }
+    .prefooter-contacts-phone { font-size: .82rem; color: var(--slate); }
+    @media(max-width: 640px) {
+      .prefooter-inner { flex-direction: column; }
+      .prefooter-right { text-align: left; }
+    }
+
+    /* ── Floating call button ── */
+    .fab-call {
+      position: fixed; bottom: 28px; right: 24px; z-index: 990;
+      width: 56px; height: 56px; border-radius: 50%;
+      background: var(--bondi);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 6px 24px rgba(65,141,169,.5);
+      text-decoration: none;
+      animation: fab-pop .35s cubic-bezier(.34,1.56,.64,1) both;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .fab-call:hover { transform: scale(1.1); box-shadow: 0 10px 32px rgba(65,141,169,.6); }
+    .fab-call:active { transform: scale(.94); }
+    .fab-call svg { width: 24px; height: 24px; stroke: #fff; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    @keyframes fab-pop { from { opacity:0; transform: scale(.6); } to { opacity:1; transform: scale(1); } }
+
+    /* scroll fade-in */
+    .fade-in { opacity: 0; transform: translateY(18px); transition: opacity .5s ease, transform .5s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── Advantages ── */
+    #advantages { background: var(--bg); }
+    .advantages-header { text-align: center; margin-bottom: 32px; }
+    .advantages-header .section-label { font-size: .8rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--bondi); margin-bottom: 6px; }
+    .advantages-header h2 { font-size: clamp(1.5rem, 3vw, 2.1rem); font-weight: 800; color: var(--text); }
+    .advantages-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .adv-card { border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; }
+    .adv-card:nth-child(odd)  { background: var(--gunmetal); }
+    .adv-card:nth-child(even) { background: var(--bondi); }
+    .adv-card-photo { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; }
+    .adv-card-body { padding: 16px 18px 20px; flex: 1; display: flex; flex-direction: column; gap: 6px; }
+    .adv-card-title { font-size: 1rem; font-weight: 800; color: #fff; line-height: 1.3; }
+    .adv-card-desc  { font-size: .82rem; color: rgba(255,255,255,.8); line-height: 1.5; }
+    @media(max-width: 700px) {
+      .advantages-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media(max-width: 400px) {
+      .advantages-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+<script>(function(){function r(){var w=window.innerWidth;var t=location.pathname;if(w>=768&&t.indexOf("/pc/")===-1)window.location.replace("pc/index.html");if(w<768&&t.indexOf("/pc/")!==-1)window.location.replace("../index.html")}r();var d;window.addEventListener("resize",function(){clearTimeout(d);d=setTimeout(r,300)})})();</script>
+</head>
+<body>
+
+<!-- ─── TOP BAR ─── -->
+<header id="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-left">
+      <a href="#" class="topbar-brand">
+        <div class="topbar-brand-icon">
+          <svg viewBox="0 0 24 24" stroke-width="1.8"><circle cx="12" cy="12" r="4"/><rect x="2" y="3" width="20" height="18" rx="2"/><line x1="6" y1="7" x2="6" y2="7" stroke-width="3" stroke-linecap="round"/><line x1="9" y1="7" x2="9" y2="7" stroke-width="3" stroke-linecap="round"/></svg>
+        </div>
+        <span>Максим</span>
+      </a>
+    </div>
+    <nav class="topbar-nav">
+      <a href="#process">Обо мне</a>
+      <a href="#process">Как работаю</a>
+      <a href="#reviews">Отзывы</a>
+      <a href="#contact">Контакты</a>
+    </nav>
+    <div class="topbar-actions">
+      <a href="tel:+79790576707" class="topbar-phone">
+        <svg viewBox="0 0 24 24" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.14 2.18 2 2 0 012.13 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.18 6.18l1.28-1.28a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        +7 (979) 057-67-07
+      </a>
+      <a href="tel:+79790576707" class="topbar-cta">Позвонить</a>
+    </div>
+    <button class="topbar-hamburger" id="hamburger" aria-label="Меню">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ── MOBILE NAV ── -->
+<div id="mobile-nav">
+  <a href="#advantages">Мои преимущества</a>
+  <a href="#problems">Поломки и цены</a>
+  <a href="#process">Как работаю</a>
+  <a href="#reviews">Отзывы</a>
+  <a href="#contact">Написать мастеру</a>
+</div>
+
+
+<!-- ─── BLOCK 1: HERO ─── -->
+<section id="hero">
+
+  <!-- Фон -->
+  <img class="hero-bg" src="IMG_3872.JPEG" alt="">
+  <div class="hero-overlay"></div>
+
+  <div class="container">
+    <div class="hero-content">
+
+      <h1 class="hero-title">
+        Частный мастер по ремонту<br>стиральных машин<br><em>в Севастополе</em> — Максим
+      </h1>
+
+      <p class="hero-subtitle">
+        Работаю без посредников, поэтому цены дешевле.<br>
+        Выезд в течение <strong style="color:var(--bondi);font-weight:700;">30–60</strong> минут.
+      </p>
+
+      <div class="hero-features">
+        <div class="hero-feature">
+          <div class="hero-feature-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <div>
+            <div class="hero-feature-title">90% ремонта за один визит</div>
+            <div class="hero-feature-desc">Приезжаю подготовленным: расходники и типовые запчасти с собой.</div>
+          </div>
+        </div>
+        <div class="hero-feature">
+          <div class="hero-feature-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+          <div>
+            <div class="hero-feature-title">Точная диагностика</div>
+            <div class="hero-feature-desc">Проф. оборудование и методики, без случайной замены деталей.</div>
+          </div>
+        </div>
+        <div class="hero-feature">
+          <div class="hero-feature-icon"><svg viewBox="0 0 24 24"><path d="M12 2l9 4v6c0 5.25-3.75 10.15-9 11.5C6.75 22.15 3 17.25 3 12V6l9-4z"/></svg></div>
+          <div>
+            <div class="hero-feature-title">Надёжные поставщики</div>
+            <div class="hero-feature-desc">Оригинал или качественные аналоги по рыночной цене.</div>
+          </div>
+        </div>
+        <div class="hero-feature">
+          <div class="hero-feature-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+          <div>
+            <div class="hero-feature-title">Честная смета</div>
+            <div class="hero-feature-desc">Индивидуальный расчёт и варианты эконом-ремонта.</div>
+          </div>
+        </div>
+        <div class="hero-feature">
+          <div class="hero-feature-icon"><svg viewBox="0 0 24 24"><path d="M12 2l9 4v6c0 5.25-3.75 10.15-9 11.5C6.75 22.15 3 17.25 3 12V6l9-4z"/><polyline points="9 12 11 14 15 10"/></svg></div>
+          <div>
+            <div class="hero-feature-title">Официально</div>
+            <div class="hero-feature-desc">Договор и чек, гарантия до 24 месяцев на работы и запчасти.</div>
+          </div>
+        </div>
+        <div class="hero-feature">
+          <div class="hero-feature-icon"><svg viewBox="0 0 24 24"><path d="M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v9a2 2 0 01-2 2h-3"/><circle cx="9" cy="20" r="2"/><circle cx="17" cy="20" r="2"/><line x1="9" y1="18" x2="9" y2="20"/><line x1="17" y1="18" x2="17" y2="20"/></svg></div>
+          <div>
+            <div class="hero-feature-title">Быстрый выезд</div>
+            <div class="hero-feature-desc">Оперативно по району, согласуем удобное время.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-promo">
+        <!-- Таймер -->
+        <div class="hero-promo-timer-block">
+          <div class="hero-promo-tc">
+            <span class="hero-promo-tc-lbl">Часов</span>
+            <span class="hero-promo-tc-val" id="h1-h">00</span>
+          </div>
+          <span class="hero-promo-sep">:</span>
+          <div class="hero-promo-tc">
+            <span class="hero-promo-tc-lbl">Минут</span>
+            <span class="hero-promo-tc-val" id="h1-m">00</span>
+          </div>
+          <span class="hero-promo-sep">:</span>
+          <div class="hero-promo-tc">
+            <span class="hero-promo-tc-lbl">Секунд</span>
+            <span class="hero-promo-tc-val" id="h1-s">00</span>
+          </div>
+        </div>
+        <!-- Текст -->
+        <div class="hero-promo-text">
+          <div class="hero-promo-date">Сегодня: <span id="promo-date"></span>г.</div>
+          <div class="hero-promo-desc">Акция — скидка 20% на ремонт в день обращения!</div>
+        </div>
+        <!-- Кнопки -->
+        <div class="hero-promo-btns">
+          <a href="#contact-choice" class="hero-promo-cta" data-open-contact>
+            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            Вызвать мастера
+          </a>
+          <a href="#lead-form" class="hero-promo-cta hero-promo-cta-outline" data-open-lead data-form-type="main_form">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            Оставить заявку
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-btns">
+        <a href="https://max.ru/u/f9LHodD0cOJJmxi_N6UYsLgHm9n8i-9ykBo-tcnKHdYMdYANO9rpL_6Y83c" class="hero-btn hero-btn-max hero-btn-icon">
+          <img src="max.svg.png" alt="MAX" style="width:36px;height:36px;object-fit:contain;">
+          <span>Написать</span>
+        </a>
+        <a href="https://t.me/makkssut" class="hero-btn hero-btn-tg hero-btn-icon">
+          <img src="telega.png" alt="Telegram" style="width:36px;height:36px;object-fit:contain;">
+          <span>Написать</span>
+        </a>
+      </div>
+
+      <div class="hero-trust-line">
+        <span class="hero-trust-dot"></span>
+        Отвечаю в течение 2–5 минут &nbsp;•&nbsp; Консультация бесплатно
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ─── STATS STRIP ─── -->
+<div id="stats">
+  <div class="stats-inner">
+    <div class="stat-item fade-in">
+      <div class="stat-val">5+</div>
+      <div class="stat-lbl">лет в ремонте</div>
+    </div>
+    <div class="stat-item fade-in">
+      <div class="stat-val">800+</div>
+      <div class="stat-lbl">довольных клиентов</div>
+    </div>
+    <div class="stat-item fade-in">
+      <div class="stat-val">94%</div>
+      <div class="stat-lbl">машин отремонтировано в день обращения</div>
+    </div>
+    <div class="stat-item fade-in">
+      <div class="stat-val">12</div>
+      <div class="stat-lbl">до 12 месяцев гарантии</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ─── BLOCK: ADVANTAGES ─── -->
+<section id="advantages">
+  <div class="container">
+    <div class="advantages-header fade-in">
+      <div class="section-label">Убедитесь лично</div>
+      <h2>Мои преимущества</h2>
+    </div>
+    <div class="advantages-grid">
+      <div class="adv-card fade-in">
+        <img src="png1.PNG" alt="Цена известна заранее" class="adv-card-photo">
+        <div class="adv-card-body">
+          <div class="adv-card-title">Цена известна заранее</div>
+          <div class="adv-card-desc">Озвучиваю стоимость до начала ремонта.</div>
+        </div>
+      </div>
+      <div class="adv-card fade-in">
+        <img src="png2.PNG" alt="Диагностика и понимание" class="adv-card-photo">
+        <div class="adv-card-body">
+          <div class="adv-card-title">Диагностика и понимание</div>
+          <div class="adv-card-desc">Покажу и объясню, что сломалось и как отремонтирую.</div>
+        </div>
+      </div>
+      <div class="adv-card fade-in">
+        <img src="png3-guarantee-1year.png" alt="Гарантия до 1 года" class="adv-card-photo">
+        <div class="adv-card-body">
+          <div class="adv-card-title">Гарантия до 1 года</div>
+          <div class="adv-card-desc">Гарантия на ремонт до 1 года на все работы.</div>
+        </div>
+      </div>
+      <div class="adv-card fade-in">
+        <img src="png4-no-holes.png" alt="Без навязанных услуг" class="adv-card-photo">
+        <div class="adv-card-body">
+          <div class="adv-card-title">Без навязанных услуг</div>
+          <div class="adv-card-desc">Только нужный ремонт, никаких скрытых доплат и обманов.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── BLOCK 2: PROBLEMS + PRICES + QUIZ ─── -->
+<section id="problems">
+  <div class="container">
+
+    <div class="section-header fade-in">
+      <div class="section-tag"><span class="badge badge-blue">Поломки и цены</span></div>
+      <h2>Популярные неисправности и стоимость ремонта</h2>
+      <p class="section-sub">Цена “от” зависит от детали и сложности доступа. Точную сумму называю до начала ремонта и приступаю только после согласования.</p>
+    </div>
+
+    <div class="problems-grid">
+      <a class="problem-card fade-in" href="#quiz-section">
+        <div class="problem-card-bg" style="background-image:url('drum.jpg');background-color:#2e3c42;"></div>
+        <div class="problem-card-overlay"></div>
+        <div class="problem-card-content">
+          <div class="problem-name">Барабан не крутится</div>
+          <div class="problem-price">от 1 200 ₽</div>
+          <div class="problem-note">Чаще всего: ремень, щётки или двигатель</div>
+          <div class="problem-tags"><span class="problem-tag">Цена до ремонта</span><span class="problem-tag">1–2 часа</span></div>
+          <span class="problem-cta">Уточнить цену</span>
+        </div>
+      </a>
+      <a class="problem-card fade-in" href="#quiz-section">
+        <div class="problem-card-bg" style="background-image:url('leak.jpg');background-color:#2e3c42;"></div>
+        <div class="problem-card-overlay"></div>
+        <div class="problem-card-content">
+          <div class="problem-name">Течёт снизу или сбоку</div>
+          <div class="problem-price">от 700 ₽</div>
+          <div class="problem-note">Обычно: патрубок, манжета или насос</div>
+          <div class="problem-tags"><span class="problem-tag">Без лишних работ</span><span class="problem-tag">Гарантия</span></div>
+          <span class="problem-cta">Уточнить цену</span>
+        </div>
+      </a>
+      <a class="problem-card fade-in" href="#quiz-section">
+        <div class="problem-card-bg" style="background-image:url('no-drain.jpg');background-color:#2e3c42;"></div>
+        <div class="problem-card-overlay"></div>
+        <div class="problem-card-content">
+          <div class="problem-name">Не сливает воду</div>
+          <div class="problem-price">от 800 ₽</div>
+          <div class="problem-note">Обычно: засор фильтра, шланг или насос</div>
+          <div class="problem-tags"><span class="problem-tag">Диагностика</span><span class="problem-tag">1–2 часа</span></div>
+          <span class="problem-cta">Уточнить цену</span>
+        </div>
+      </a>
+      <a class="problem-card fade-in" href="#quiz-section">
+        <div class="problem-card-bg" style="background-image:url('vibration-damper.jpg');background-color:#2e3c42;"></div>
+        <div class="problem-card-overlay"></div>
+        <div class="problem-card-content">
+          <div class="problem-name">Вибрирует при отжиме</div>
+          <div class="problem-price">от 900 ₽</div>
+          <div class="problem-note">Обычно: амортизаторы, балансировка или подшипник</div>
+          <div class="problem-tags"><span class="problem-tag">Проверка на месте</span><span class="problem-tag">Гарантия</span></div>
+          <span class="problem-cta">Уточнить цену</span>
+        </div>
+      </a>
+      <a class="problem-card fade-in" href="#quiz-section">
+        <div class="problem-card-bg" style="background-image:url('no-power.jpg');background-color:#2e3c42;"></div>
+        <div class="problem-card-overlay"></div>
+        <div class="problem-card-content">
+          <div class="problem-name">Не включается</div>
+          <div class="problem-price">от 500 ₽</div>
+          <div class="problem-note">Обычно: кнопка, фильтр питания или модуль</div>
+          <div class="problem-tags"><span class="problem-tag">Сначала диагностика</span><span class="problem-tag">Цена заранее</span></div>
+          <span class="problem-cta">Уточнить цену</span>
+        </div>
+      </a>
+      <a class="problem-card fade-in" href="#quiz-section">
+        <div class="problem-card-bg" style="background-image:url('no-heat.jpg');background-color:#2e3c42;"></div>
+        <div class="problem-card-overlay"></div>
+        <div class="problem-card-content">
+          <div class="problem-name">Не греет воду</div>
+          <div class="problem-price">от 1 400 ₽</div>
+          <div class="problem-note">Обычно: ТЭН или датчик температуры</div>
+          <div class="problem-tags"><span class="problem-tag">Проверка мультиметром</span><span class="problem-tag">Гарантия</span></div>
+          <span class="problem-cta">Уточнить цену</span>
+        </div>
+      </a>
+      <a class="problem-card fade-in" href="#quiz-section">
+        <div class="problem-card-bg" style="background-image:url('door.jpg');background-color:#2e3c42;"></div>
+        <div class="problem-card-overlay"></div>
+        <div class="problem-card-content">
+          <div class="problem-name">Не открывается люк</div>
+          <div class="problem-price">от 600 ₽</div>
+          <div class="problem-note">Обычно: блокировка или замок люка</div>
+          <div class="problem-tags"><span class="problem-tag">Аккуратно открою</span><span class="problem-tag">Без повреждений</span></div>
+          <span class="problem-cta">Уточнить цену</span>
+        </div>
+      </a>
+      <a class="problem-card fade-in" href="#quiz-section">
+        <div class="problem-card-bg" style="background-image:url('error-display.jpg');background-color:#2e3c42;"></div>
+        <div class="problem-card-overlay"></div>
+        <div class="problem-card-content">
+          <div class="problem-name">Ошибка на дисплее</div>
+          <div class="problem-price">от 800 ₽</div>
+          <div class="problem-note">Считаю код и устраняю причину, а не только сброс</div>
+          <div class="problem-tags"><span class="problem-tag">Причина ошибки</span><span class="problem-tag">Согласование</span></div>
+          <span class="problem-cta">Уточнить цену</span>
+        </div>
+      </a>
+      <a class="problem-card fade-in" href="#quiz-section">
+        <div class="problem-card-bg" style="background-image:url('noise_stuk.jpg');background-color:#2e3c42;"></div>
+        <div class="problem-card-overlay"></div>
+        <div class="problem-card-content">
+          <div class="problem-name">Сильный шум и стук</div>
+          <div class="problem-price">от 1 500 ₽</div>
+          <div class="problem-note">Обычно: подшипник, амортизатор или посторонний предмет</div>
+          <div class="problem-tags"><span class="problem-tag">Осмотр барабана</span><span class="problem-tag">Гарантия</span></div>
+          <span class="problem-cta">Уточнить цену</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="price-note-banner fade-in">
+      <div class="price-note-icon">✓</div>
+      <div class="price-note-text"><h4>Как читать цены</h4><p>В карточках указан ориентир по работе. Если нужна запчасть, покажу причину, назову цену детали и согласую итоговую сумму до начала ремонта.</p></div>
+    </div>
+
+    <!-- QUIZ -->
+    <div id="quiz-section" class="fade-in">
+      <div class="quiz-wrap">
+        <div class="quiz-header">
+          <h3>Узнайте примерную стоимость ремонта</h3>
+          <span class="quiz-progress-text" id="quiz-progress-text">Вопрос 1 из 4</span>
+        </div>
+        <div class="quiz-progress-bar">
+          <div class="quiz-progress-fill" id="quiz-progress-fill" style="width:25%"></div>
+        </div>
+
+        <div id="quiz-steps">
+
+          <!-- Step 1 -->
+          <div class="quiz-body" id="quiz-step-1">
+            <div class="quiz-question">Что случилось с машиной?</div>
+            <div class="quiz-options">
+              <label class="quiz-option" data-q="1" data-result-title="Вашу стиралку, скорее всего, можно починить" data-result-price="Работа мастера: примерно 1 500–3 500 ₽" data-result-text="Похоже на питание, кнопку или модуль. Позвоните: уточню признаки, скажу ориентир и закреплю скидку до 20%. Иногда достаточно проверить питание или перезапуск."><div class="opt-check"></div>Не включается совсем</label>
+              <label class="quiz-option" data-q="1" data-result-title="Вашу стиралку, скорее всего, можно починить" data-result-price="Работа мастера: примерно 1 500–3 500 ₽" data-result-text="Часто причина в засоре, насосе, клапане или фильтре. Позвоните: подскажу, что можно проверить сразу, и скажу цену со скидкой до 20%."><div class="opt-check"></div>Не сливает или не набирает воду</label>
+              <label class="quiz-option" data-q="1" data-result-title="Похоже, поломка устранима" data-result-price="Работа мастера: примерно 1 500–3 500 ₽" data-result-text="Обычно течь идёт от манжеты, патрубка, шланга или насоса. По звонку уточню симптомы и скажу, стоит ли вызывать мастера."><div class="opt-check"></div>Течёт вода</label>
+              <label class="quiz-option" data-q="1" data-result-title="Вашу стиралку, скорее всего, можно починить" data-result-price="Работа мастера: примерно 1 500–3 500 ₽" data-result-text="Похоже на амортизаторы, балансировку или посторонний предмет. Позвоните: иногда проблему можно убрать простыми действиями без ремонта."><div class="opt-check"></div>Шумит, стучит или вибрирует</label>
+              <label class="quiz-option" data-q="1" data-result-title="Вашу стиралку, скорее всего, можно починить" data-result-price="Работа мастера: примерно 1 500–3 500 ₽" data-result-text="Часто виноваты ремень, щётки или двигатель. По телефону уточню марку и признаки, назову ориентир и скидку до 20%."><div class="opt-check"></div>Барабан не крутится</label>
+              <label class="quiz-option" data-q="1" data-result-title="Похоже, решение есть" data-result-price="Работа мастера: примерно 1 500–3 500 ₽" data-result-text="Опишите, что происходит с машинкой. Иногда ремонт не требуется: подскажу, что проверить, или сразу скажу примерную стоимость работы."><div class="opt-check"></div>Другая проблема</label>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="quiz-body hidden" id="quiz-step-2">
+            <div class="quiz-question">Когда появилась проблема?</div>
+            <div class="quiz-options">
+              <label class="quiz-option" data-q="2"><div class="opt-check"></div>Только что, впервые</label>
+              <label class="quiz-option" data-q="2"><div class="opt-check"></div>Несколько дней назад</label>
+              <label class="quiz-option" data-q="2"><div class="opt-check"></div>Неделю назад и более</label>
+              <label class="quiz-option" data-q="2"><div class="opt-check"></div>Было и раньше, то пропадало</label>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="quiz-body hidden" id="quiz-step-3">
+            <div class="quiz-question">Машина сейчас...</div>
+            <div class="quiz-options">
+              <label class="quiz-option" data-q="3"><div class="opt-check"></div>Полностью не работает</label>
+              <label class="quiz-option" data-q="3"><div class="opt-check"></div>Частично работает</label>
+              <label class="quiz-option" data-q="3"><div class="opt-check"></div>Работает, но с проблемой</label>
+            </div>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="quiz-body hidden" id="quiz-step-4">
+            <div class="quiz-question">Что для вас важнее всего?</div>
+            <div class="quiz-options">
+              <label class="quiz-option" data-q="4"><div class="opt-check"></div>Починить как можно быстрее</label>
+              <label class="quiz-option" data-q="4"><div class="opt-check"></div>Заплатить минимум</label>
+              <label class="quiz-option" data-q="4"><div class="opt-check"></div>Получить гарантию на результат</label>
+              <label class="quiz-option" data-q="4"><div class="opt-check"></div>Всё вместе</label>
+            </div>
+          </div>
+
+          <!-- Result -->
+          <div class="quiz-result hidden" id="quiz-result">
+            <div class="quiz-result-icon">&#128077;</div>
+            <h3 id="quiz-result-title">Вашу стиралку, скорее всего, можно починить</h3>
+            <div class="quiz-result-price" id="quiz-result-price">Работа мастера: примерно 1 500–3 500 ₽</div>
+            <p id="quiz-result-text">Позвоните: уточню симптомы, скажу ориентир по цене и закреплю для вас скидку до 20%.</p>
+            <div class="quiz-result-detail">
+              <div class="quiz-result-detail-row"><span>&#9650;</span> Вам доступна скидка до 20% при обращении с сайта</div>
+              <div class="quiz-result-detail-row"><span>&#9650;</span> Иногда ремонт не требуется — подскажу по телефону, что проверить</div>
+              <div class="quiz-result-detail-row"><span>&#9650;</span> Точную цену согласую до начала работ</div>
+            </div>
+            <div class="quiz-result-actions">
+              <a href="tel:+79790576707" class="btn btn-primary btn-lg">Позвонить мастеру</a>
+              <a href="https://max.ru/u/f9LHodD0cOJJmxi_N6UYsLgHm9n8i-9ykBo-tcnKHdYMdYANO9rpL_6Y83c" class="btn btn-outline btn-lg">Написать в Max</a>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="quiz-nav" id="quiz-nav">
+          <button class="quiz-back hidden" id="quiz-back" onclick="quizBack()">&#8592; Назад</button>
+          <div style="flex:1"></div>
+          <button class="btn btn-primary" id="quiz-next" onclick="quizNext()" disabled>Далее</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ─── BLOCK 3: PROCESS ─── -->
+<section id="process">
+  <div class="container">
+
+    <div class="section-header fade-in">
+      <div class="section-tag"><span class="badge badge-green">Как проходит ремонт</span></div>
+      <h2>Как проходит ремонт</h2>
+      <p class="section-sub">Показываю каждый этап — без скрытых платежей.</p>
+    </div>
+
+    <div class="process-grid">
+
+      <div class="process-step fade-in">
+        <div class="process-step-img" style="background-image:url('process/step-1.jpg');"><div class="process-photo-icon"><svg viewBox="0 0 64 64"><rect x="14" y="10" width="36" height="44" rx="6"/><path d="M24 22h16M24 32h16M24 42h10"/></svg></div><span class="process-cover-mark">01</span></div>
+        <div class="process-step-body">
+          <div class="process-num">1</div>
+          <div class="process-title">Оставляете заявку</div>
+          <div class="process-desc">Звоните, пишете или оставляете заявку на сайте. Отвечаю в течение 5–10 минут.</div>
+          <div class="process-note"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Отвечаю быстро<br>5–10 минут</span></div>
+        </div>
+      </div>
+
+      <div class="process-step fade-in">
+        <div class="process-step-img" style="background-image:url('process/step-2.jpg');background-position:center 62%;"><div class="process-photo-icon"><svg viewBox="0 0 64 64"><path d="M12 18h40v25H26l-10 8v-8h-4z"/><path d="M24 27h18M24 35h12"/></svg></div><span class="process-cover-mark">02</span></div>
+        <div class="process-step-body">
+          <div class="process-num">2</div>
+          <div class="process-title">Уточняю проблему</div>
+          <div class="process-desc">Задаю пару вопросов по телефону, чтобы понять проблему и взять нужные детали.</div>
+          <div class="process-note"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg><span>Точно в цель<br>Без лишних вопросов</span></div>
+        </div>
+      </div>
+
+      <div class="process-step fade-in">
+        <div class="process-step-img" style="background-image:url('process/step-3.jpg');"><div class="process-photo-icon"><svg viewBox="0 0 64 64"><path d="M10 38h6l5-12h23l8 12h2v10H10z"/><path d="M22 48a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM46 48a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z"/><path d="M46 16v10M41 21h10"/></svg></div><span class="process-cover-mark">03</span></div>
+        <div class="process-step-body">
+          <div class="process-num">3</div>
+          <div class="process-title">Приезжаю в удобное время</div>
+          <div class="process-desc">Приезжаю в согласованное время без опозданий. Обычно в течение 1–2 часов.</div>
+          <div class="process-note"><svg viewBox="0 0 24 24"><path d="M12 2v10l4 2"/><circle cx="12" cy="12" r="9"/></svg><span>Приеду в удобное вам время</span></div>
+        </div>
+      </div>
+
+      <div class="process-step fade-in">
+        <div class="process-step-img" style="background-image:url('process/step-4.jpg');"><div class="process-photo-icon"><svg viewBox="0 0 64 64"><circle cx="28" cy="28" r="15"/><path d="m40 40 12 12M22 24h12M22 32h8"/></svg></div><span class="process-cover-mark">04</span></div>
+        <div class="process-step-body">
+          <div class="process-num">4</div>
+          <div class="process-title">Диагностика бесплатно</div>
+          <div class="process-desc">Нахожу причину поломки и объясняю простым языком. Диагностика при ремонте бесплатно.</div>
+          <div class="process-note"><svg viewBox="0 0 24 24"><path d="M4 19h16"/><path d="m8 15 4-8 4 8"/></svg><span>Найду причину<br>Покажу на месте</span></div>
+        </div>
+      </div>
+
+      <div class="process-step fade-in">
+        <div class="process-step-img" style="background-image:url('process/step-5.jpg');"><div class="process-photo-icon"><svg viewBox="0 0 64 64"><rect x="14" y="14" width="36" height="36" rx="5"/><path d="M24 26h16M24 36h10M39 36h1M39 42h1M31 42h1M23 42h1"/></svg></div><span class="process-cover-mark">05</span></div>
+        <div class="process-step-body">
+          <div class="process-num">5</div>
+          <div class="process-title">Называю цену — вы решаете</div>
+          <div class="process-desc">Озвучиваю точную стоимость до начала работ. Без скрытых доплат.</div>
+          <div class="process-note"><svg viewBox="0 0 24 24"><path d="M12 1v22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7H14a3.5 3.5 0 0 1 0 7H6"/></svg><span>Цена заранее<br>Без скрытых доплат</span></div>
+        </div>
+      </div>
+
+      <div class="process-step fade-in">
+        <div class="process-step-img" style="background-image:url('process/step-6.jpg');"><div class="process-photo-icon"><svg viewBox="0 0 64 64"><path d="M32 8 50 16v13c0 12-8 22-18 27-10-5-18-15-18-27V16z"/><path d="m24 32 6 6 12-14"/></svg></div><span class="process-cover-mark">06</span></div>
+        <div class="process-step-body">
+          <div class="process-num">6</div>
+          <div class="process-title">Ремонт и проверка</div>
+          <div class="process-desc">Чиню, проверяем вместе работу. Оплата только после результата.</div>
+          <div class="process-note"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-5"/></svg><span>Проверим вместе<br>Оплата после результата</span></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="process-guarantee fade-in">
+      <div class="process-guarantee-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2l9 4v6c0 5.25-3.75 10.15-9 11.5C6.75 22.15 3 17.25 3 12V6l9-4z"/><polyline points="9 12 11 14 15 10"/></svg>
+      </div>
+      <div class="process-guarantee-text">
+        <h3>Если поломка повторится — приеду и исправлю бесплатно</h3>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ─── BLOCK 4: REVIEWS ─── -->
+<section id="reviews" data-review-png>
+  <div class="container">
+    <div class="section-head fade-in">
+      <div>
+        <div class="section-tag"><span class="badge badge-amber">Отзывы клиентов</span></div>
+        <h2>Отзывы клиентов после ремонта</h2>
+        <p class="section-sub">Скриншоты переписок с клиентами.</p>
+      </div>
+    </div>
+    <div class="review-png-stage">
+      <div class="review-png-track" data-review-track>
+        <article class="review-png-slide"><img src="../images/reviews/max-phone-1.png" alt="Отзыв клиента Марина К."></article>
+        <article class="review-png-slide"><img src="../images/reviews/max-phone-2.png" alt="Отзыв клиента Андрей С."></article>
+        <article class="review-png-slide"><img src="../images/reviews/max-phone-3.png" alt="Отзыв клиента Светлана М."></article>
+        <article class="review-png-slide"><img src="../images/reviews/max-phone-4.png" alt="Отзыв клиента Наталья В."></article>
+        <article class="review-png-slide"><img src="../images/reviews/max-phone-5.png" alt="Отзыв клиента Виктор С."></article>
+        <article class="review-png-slide"><img src="../images/reviews/max-phone-6.png" alt="Отзыв клиента Оксана Т."></article>
+        <article class="review-png-slide"><img src="../images/reviews/max-phone-7.png" alt="Отзыв клиента Дмитрий П."></article>
+        <article class="review-png-slide"><img src="../images/reviews/max-phone-8.png" alt="Отзыв клиента Елена Н."></article>
+        <article class="review-png-slide"><img src="../images/reviews/max-phone-9.png" alt="Отзыв клиента Кирилл М."></article>
+        <article class="review-png-slide"><img src="../images/reviews/max-phone-10.png" alt="Отзыв клиента Татьяна В."></article>
+        <article class="review-png-slide"><img src="../images/reviews/max-phone-11.png" alt="Отзыв клиента Людмила С."></article>
+        <article class="review-png-slide"><img src="../images/reviews/max-phone-12.png" alt="Отзыв клиента Алексей Р."></article>
+        <article class="review-png-slide"><img src="../images/reviews/max-phone-13.png" alt="Отзыв клиента Вера К."></article>
+        <article class="review-png-slide"><img src="../images/reviews/max-phone-14.png" alt="Отзыв клиента Ирина П."></article>
+        <article class="review-png-slide"><img src="../images/reviews/max-phone-15.png" alt="Отзыв клиента Роман А."></article>
+        <article class="review-png-slide"><img src="../images/reviews/max-phone-16.png" alt="Отзыв клиента Галина Ф."></article>
+        <article class="review-png-slide"><img src="../images/reviews/max-phone-17.png" alt="Отзыв клиента Павел Д."></article>
+        <article class="review-png-slide"><img src="../images/reviews/max-phone-18.png" alt="Отзыв клиента Анна Л."></article>
+        <article class="review-png-slide"><img src="../images/reviews/max-phone-19.png" alt="Отзыв клиента Сергей Н."></article>
+        <article class="review-png-slide"><img src="../images/reviews/max-phone-20.png" alt="Отзыв клиента Юлия Б."></article>
+        <article class="review-png-slide"><img src="../images/reviews/max-phone-21.png" alt="Отзыв клиента Михаил Т."></article>
+        <article class="review-png-slide"><img src="../images/reviews/max-phone-22.png" alt="Отзыв клиента Ольга Р."></article>
+        <article class="review-png-slide"><img src="../images/reviews/max-phone-23.png" alt="Отзыв клиента Денис В."></article>
+        <article class="review-png-slide"><img src="../images/reviews/max-phone-24.png" alt="Отзыв клиента Ксения С."></article>
+        <article class="review-png-slide"><img src="../images/reviews/max-phone-25.png" alt="Отзыв клиента Борис И."></article>
+      </div>
+      <div class="review-png-nav">
+        <button class="review-png-arrow" data-review-prev aria-label="Назад"><svg viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg></button>
+        <div class="review-png-dots" data-review-dots></div>
+        <button class="review-png-arrow" data-review-next aria-label="Вперёд"><svg viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="reviews-old" hidden>
+  <div class="container">
+
+    <div class="section-header fade-in">
+      <div class="section-tag"><span class="badge badge-amber">Отзывы клиентов</span></div>
+      <h2>Отзывы клиентов после ремонта</h2>
+      <p class="section-sub">Скриншоты переписок с клиентами.</p>
+    </div>
+
+    <div class="phones-section">
+    <div class="phones-carousel">
+
+
+      <!-- GROUP 1 -->
+      <div class="phones-group active" data-group="0">
+        <div class="iphone-wrap"><div class="iphone-frame"><div class="iphone-btn-power"></div><div class="iphone-btn-action"></div><div class="iphone-btn-vol1"></div><div class="iphone-btn-vol2"></div><div class="iphone-usbc"></div><div class="iphone-screen"><div class="iphone-island"></div><div class="iphone-statusbar"><span class="iphone-time">9:41</span><div class="iphone-icons"><svg viewBox="0 0 24 24"><path d="M1 6l6 6 5-5 5 5 6-6"/></svg><svg viewBox="0 0 24 24"><path d="M5 12.5C5 8.36 8.36 5 12.5 5S20 8.36 20 12.5"/><circle cx="12.5" cy="12.5" r="2"/></svg><svg viewBox="0 0 24 24"><rect x="2" y="7" width="16" height="10" rx="2"/><path d="M22 11v2"/></svg></div></div><div class="iphone-chat-header"><div class="tg-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div><div class="wa-av" style="background:#418da9;">МК</div><div><div class="wa-nm">Марина К.</div><div class="wa-st">в сети</div></div></div><div class="iphone-chat-body"><div class="wa-in">Здравствуйте, машинка не сливает воду, срочно нужно сделать<span class="wa-t">10:14</span></div><div class="wa-out">Здравствуйте, скорее всего засор или насос. Оставьте адрес, приеду решу проблему<span class="wa-t">10:15</span></div><div class="wa-in">Адрес: ул. Ленина, 25, позвоните как будете подъезжать, объясню какой подъезд<span class="wa-t">10:16</span></div><div class="wa-out">Напишите, пожалуйста, отзыв о проделанной работе</div><div class="wa-in">Максим приехал быстро, сразу разобрался и всё починил. Вода теперь уходит нормально, объяснил в чём была проблема. Спасибо, выручил<span class="wa-t">13:58</span></div></div><div class="iphone-input"><div class="iphone-input-field">Сообщение</div></div></div></div></div>
+        <div class="iphone-wrap"><div class="iphone-frame"><div class="iphone-btn-power"></div><div class="iphone-btn-action"></div><div class="iphone-btn-vol1"></div><div class="iphone-btn-vol2"></div><div class="iphone-usbc"></div><div class="iphone-screen"><div class="iphone-island"></div><div class="iphone-statusbar"><span class="iphone-time">9:41</span><div class="iphone-icons"><svg viewBox="0 0 24 24"><path d="M1 6l6 6 5-5 5 5 6-6"/></svg><svg viewBox="0 0 24 24"><path d="M5 12.5C5 8.36 8.36 5 12.5 5S20 8.36 20 12.5"/><circle cx="12.5" cy="12.5" r="2"/></svg><svg viewBox="0 0 24 24"><rect x="2" y="7" width="16" height="10" rx="2"/><path d="M22 11v2"/></svg></div></div><div class="iphone-chat-header"><div class="tg-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div><div class="wa-av" style="background:#33708a;">АС</div><div><div class="wa-nm">Андрей С.</div><div class="wa-st">в сети</div></div></div><div class="iphone-chat-body"><div class="wa-in">Здравствуйте, при отжиме сильно стучит, боюсь сломается<span class="wa-t">11:32</span></div><div class="wa-out">Здравствуйте, похоже на амортизаторы или подшипник. Оставьте адрес, приеду решу проблему<span class="wa-t">11:33</span></div><div class="wa-in">Адрес: пр. Победы, 14, я выйду встречу<span class="wa-t">11:35</span></div><div class="wa-out">Напишите, пожалуйста, отзыв о проделанной работе</div><div class="wa-in">Максим посмотрел, всё сделал и теперь машинка работает тихо. Объяснил причину и что дальше делать. Сделал аккуратно, доволен<span class="wa-t">15:28</span></div></div><div class="iphone-input"><div class="iphone-input-field">Сообщение</div></div></div></div></div>
+        <div class="iphone-wrap"><div class="iphone-frame"><div class="iphone-btn-power"></div><div class="iphone-btn-action"></div><div class="iphone-btn-vol1"></div><div class="iphone-btn-vol2"></div><div class="iphone-usbc"></div><div class="iphone-screen"><div class="iphone-island"></div><div class="iphone-statusbar"><span class="iphone-time">9:41</span><div class="iphone-icons"><svg viewBox="0 0 24 24"><path d="M1 6l6 6 5-5 5 5 6-6"/></svg><svg viewBox="0 0 24 24"><path d="M5 12.5C5 8.36 8.36 5 12.5 5S20 8.36 20 12.5"/><circle cx="12.5" cy="12.5" r="2"/></svg><svg viewBox="0 0 24 24"><rect x="2" y="7" width="16" height="10" rx="2"/><path d="M22 11v2"/></svg></div></div><div class="iphone-chat-header"><div class="tg-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div><div class="wa-av" style="background:#5e6f78;">СМ</div><div><div class="wa-nm">Светлана М.</div><div class="wa-st">в сети</div></div></div><div class="iphone-chat-body"><div class="wa-in">Здравствуйте, машинка не греет воду<span class="wa-t">09:05</span></div><div class="wa-out">Здравствуйте, скорее всего ТЭН. Оставьте адрес, приеду решу проблему<span class="wa-t">09:06</span></div><div class="wa-in">Адрес: ул. Гоголя, 8, наберите меня, скажу как пройти<span class="wa-t">09:08</span></div><div class="wa-out">Напишите, пожалуйста, отзыв о проделанной работе</div><div class="wa-in">Максим быстро нашёл проблему, заменил и всё проверил. Теперь вода греется, машинка стирает нормально. Всё сделал без лишних разговоров<span class="wa-t">13:10</span></div></div><div class="iphone-input"><div class="iphone-input-field">Сообщение</div></div></div></div></div>
+      </div>
+      <!-- GROUP 2 -->
+      <div class="phones-group" data-group="1">
+        <div class="iphone-wrap"><div class="iphone-frame"><div class="iphone-btn-power"></div><div class="iphone-btn-action"></div><div class="iphone-btn-vol1"></div><div class="iphone-btn-vol2"></div><div class="iphone-usbc"></div><div class="iphone-screen"><div class="iphone-island"></div><div class="iphone-statusbar"><span class="iphone-time">9:41</span><div class="iphone-icons"><svg viewBox="0 0 24 24"><path d="M1 6l6 6 5-5 5 5 6-6"/></svg><svg viewBox="0 0 24 24"><path d="M5 12.5C5 8.36 8.36 5 12.5 5S20 8.36 20 12.5"/><circle cx="12.5" cy="12.5" r="2"/></svg><svg viewBox="0 0 24 24"><rect x="2" y="7" width="16" height="10" rx="2"/><path d="M22 11v2"/></svg></div></div><div class="iphone-chat-header"><div class="tg-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div><div class="wa-av" style="background:#3c4145;">НВ</div><div><div class="wa-nm">Наталья В.</div><div class="wa-st">в сети</div></div></div><div class="iphone-chat-body"><div class="wa-in">Здравствуйте, машинка течёт снизу<span class="wa-t">14:20</span></div><div class="wa-out">Здравствуйте, возможно патрубок или насос. Оставьте адрес, приеду решу проблему<span class="wa-t">14:21</span></div><div class="wa-in">Адрес: ул. Хрусталева, 32, дом во дворе, лучше позвоните<span class="wa-t">14:23</span></div><div class="wa-out">Напишите, пожалуйста, отзыв о проделанной работе</div><div class="wa-in">Максим устранил течь, показал где была проблема и всё аккуратно сделал. Теперь сухо, машинка работает как надо. Спасибо<span class="wa-t">17:55</span></div></div><div class="iphone-input"><div class="iphone-input-field">Сообщение</div></div></div></div></div>
+        <div class="iphone-wrap"><div class="iphone-frame"><div class="iphone-btn-power"></div><div class="iphone-btn-action"></div><div class="iphone-btn-vol1"></div><div class="iphone-btn-vol2"></div><div class="iphone-usbc"></div><div class="iphone-screen"><div class="iphone-island"></div><div class="iphone-statusbar"><span class="iphone-time">9:41</span><div class="iphone-icons"><svg viewBox="0 0 24 24"><path d="M1 6l6 6 5-5 5 5 6-6"/></svg><svg viewBox="0 0 24 24"><path d="M5 12.5C5 8.36 8.36 5 12.5 5S20 8.36 20 12.5"/><circle cx="12.5" cy="12.5" r="2"/></svg><svg viewBox="0 0 24 24"><rect x="2" y="7" width="16" height="10" rx="2"/><path d="M22 11v2"/></svg></div></div><div class="iphone-chat-header"><div class="tg-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div><div class="wa-av" style="background:#418da9;">РК</div><div><div class="wa-nm">Роман К.</div><div class="wa-st">в сети</div></div></div><div class="iphone-chat-body"><div class="wa-in">Здравствуйте, машинка вообще не включается<span class="wa-t">08:44</span></div><div class="wa-out">Здравствуйте, возможно проблема с питанием или модулем. Оставьте адрес, приеду решу проблему<span class="wa-t">08:45</span></div><div class="wa-in">Адрес: ул. Адмирала Октябрьского, 19, подъезд со стороны двора, если что позвоните<span class="wa-t">08:47</span></div><div class="wa-out">Напишите, пожалуйста, отзыв о проделанной работе</div><div class="wa-in">Максим приехал, быстро разобрался и восстановил работу. Всё объяснил простым языком, сейчас всё включается без проблем. Рекомендую<span class="wa-t">12:03</span></div></div><div class="iphone-input"><div class="iphone-input-field">Сообщение</div></div></div></div></div>
+        <div class="iphone-wrap"><div class="iphone-frame"><div class="iphone-btn-power"></div><div class="iphone-btn-action"></div><div class="iphone-btn-vol1"></div><div class="iphone-btn-vol2"></div><div class="iphone-usbc"></div><div class="iphone-screen"><div class="iphone-island"></div><div class="iphone-statusbar"><span class="iphone-time">9:41</span><div class="iphone-icons"><svg viewBox="0 0 24 24"><path d="M1 6l6 6 5-5 5 5 6-6"/></svg><svg viewBox="0 0 24 24"><path d="M5 12.5C5 8.36 8.36 5 12.5 5S20 8.36 20 12.5"/><circle cx="12.5" cy="12.5" r="2"/></svg><svg viewBox="0 0 24 24"><rect x="2" y="7" width="16" height="10" rx="2"/><path d="M22 11v2"/></svg></div></div><div class="iphone-chat-header"><div class="tg-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div><div class="wa-av" style="background:#5e6f78;">ИЛ</div><div><div class="wa-nm">Ирина Л.</div><div class="wa-st">в сети</div></div></div><div class="iphone-chat-body"><div class="wa-in">Здравствуйте, барабан не крутится, только гудит<span class="wa-t">10:50</span></div><div class="wa-out">Здравствуйте, скорее всего ремень или щётки двигателя. Оставьте адрес, приеду решу проблему<span class="wa-t">10:51</span></div><div class="wa-in">Адрес: ул. Нахимова, 7, домофон 34<span class="wa-t">10:53</span></div><div class="wa-out">Напишите, пожалуйста, отзыв о проделанной работе</div><div class="wa-in">Максим нашёл причину быстро — ремень слетел. Заменил, проверил, объяснил как не допустить снова. Приехал в удобное время, спасибо<span class="wa-t">14:20</span></div></div><div class="iphone-input"><div class="iphone-input-field">Сообщение</div></div></div></div></div>
+      </div>
+      <!-- GROUP 3 -->
+      <div class="phones-group" data-group="2">
+        <div class="iphone-wrap"><div class="iphone-frame"><div class="iphone-btn-power"></div><div class="iphone-btn-action"></div><div class="iphone-btn-vol1"></div><div class="iphone-btn-vol2"></div><div class="iphone-usbc"></div><div class="iphone-screen"><div class="iphone-island"></div><div class="iphone-statusbar"><span class="iphone-time">9:41</span><div class="iphone-icons"><svg viewBox="0 0 24 24"><path d="M1 6l6 6 5-5 5 5 6-6"/></svg><svg viewBox="0 0 24 24"><path d="M5 12.5C5 8.36 8.36 5 12.5 5S20 8.36 20 12.5"/><circle cx="12.5" cy="12.5" r="2"/></svg><svg viewBox="0 0 24 24"><rect x="2" y="7" width="16" height="10" rx="2"/><path d="M22 11v2"/></svg></div></div><div class="iphone-chat-header"><div class="tg-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div><div class="wa-av" style="background:#3c4145;">ВС</div><div><div class="wa-nm">Виктор С.</div><div class="wa-st">в сети</div></div></div><div class="iphone-chat-body"><div class="wa-in">Здравствуйте, машина показывает ошибку и не стирает<span class="wa-t">13:05</span></div><div class="wa-out">Здравствуйте, нужно считать код ошибки и найти причину. Оставьте адрес, приеду решу проблему<span class="wa-t">13:06</span></div><div class="wa-in">Адрес: ул. Большая Морская, 43, третий этаж, квартира слева<span class="wa-t">13:08</span></div><div class="wa-out">Напишите, пожалуйста, отзыв о проделанной работе</div><div class="wa-in">Максим считал ошибку, сразу понял в чём дело. Починил быстро, цену назвал до начала работы. Доволен результатом<span class="wa-t">17:00</span></div></div><div class="iphone-input"><div class="iphone-input-field">Сообщение</div></div></div></div></div>
+        <div class="iphone-wrap"><div class="iphone-frame"><div class="iphone-btn-power"></div><div class="iphone-btn-action"></div><div class="iphone-btn-vol1"></div><div class="iphone-btn-vol2"></div><div class="iphone-usbc"></div><div class="iphone-screen"><div class="iphone-island"></div><div class="iphone-statusbar"><span class="iphone-time">9:41</span><div class="iphone-icons"><svg viewBox="0 0 24 24"><path d="M1 6l6 6 5-5 5 5 6-6"/></svg><svg viewBox="0 0 24 24"><path d="M5 12.5C5 8.36 8.36 5 12.5 5S20 8.36 20 12.5"/><circle cx="12.5" cy="12.5" r="2"/></svg><svg viewBox="0 0 24 24"><rect x="2" y="7" width="16" height="10" rx="2"/><path d="M22 11v2"/></svg></div></div><div class="iphone-chat-header"><div class="tg-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div><div class="wa-av" style="background:#418da9;">ОТ</div><div><div class="wa-nm">Оксана Т.</div><div class="wa-st">в сети</div></div></div><div class="iphone-chat-body"><div class="wa-in">Здравствуйте, люк не открывается, бельё внутри<span class="wa-t">09:30</span></div><div class="wa-out">Здравствуйте, это блокировка или замок. Оставьте адрес, приеду решу проблему<span class="wa-t">09:31</span></div><div class="wa-in">Адрес: ул. Советская, 12, жду дома весь день<span class="wa-t">09:33</span></div><div class="wa-out">Напишите, пожалуйста, отзыв о проделанной работе</div><div class="wa-in">Максим приехал быстро, открыл машину и заменил замок. Бельё достали, машинка работает нормально. Спасибо<span class="wa-t">12:45</span></div></div><div class="iphone-input"><div class="iphone-input-field">Сообщение</div></div></div></div></div>
+        <div class="iphone-wrap"><div class="iphone-frame"><div class="iphone-btn-power"></div><div class="iphone-btn-action"></div><div class="iphone-btn-vol1"></div><div class="iphone-btn-vol2"></div><div class="iphone-usbc"></div><div class="iphone-screen"><div class="iphone-island"></div><div class="iphone-statusbar"><span class="iphone-time">9:41</span><div class="iphone-icons"><svg viewBox="0 0 24 24"><path d="M1 6l6 6 5-5 5 5 6-6"/></svg><svg viewBox="0 0 24 24"><path d="M5 12.5C5 8.36 8.36 5 12.5 5S20 8.36 20 12.5"/><circle cx="12.5" cy="12.5" r="2"/></svg><svg viewBox="0 0 24 24"><rect x="2" y="7" width="16" height="10" rx="2"/><path d="M22 11v2"/></svg></div></div><div class="iphone-chat-header"><div class="tg-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div><div class="wa-av" style="background:#33708a;">ДП</div><div><div class="wa-nm">Дмитрий П.</div><div class="wa-st">в сети</div></div></div><div class="iphone-chat-body"><div class="wa-in">Здравствуйте, машина запускается но воду не набирает<span class="wa-t">15:10</span></div><div class="wa-out">Здравствуйте, скорее всего клапан набора воды или засор сетки. Оставьте адрес, приеду решу проблему<span class="wa-t">15:11</span></div><div class="wa-in">Адрес: ул. Горпищенко, 55, позвоните заранее<span class="wa-t">15:13</span></div><div class="wa-out">Напишите, пожалуйста, отзыв о проделанной работе</div><div class="wa-in">Максим разобрался с клапаном, всё почистил и заменил что нужно. Теперь машина набирает воду без проблем. Рекомендую<span class="wa-t">18:30</span></div></div><div class="iphone-input"><div class="iphone-input-field">Сообщение</div></div></div></div></div>
+      </div>
+      <!-- GROUP 4 -->
+      <div class="phones-group" data-group="3">
+        <div class="iphone-wrap"><div class="iphone-frame"><div class="iphone-btn-power"></div><div class="iphone-btn-action"></div><div class="iphone-btn-vol1"></div><div class="iphone-btn-vol2"></div><div class="iphone-usbc"></div><div class="iphone-screen"><div class="iphone-island"></div><div class="iphone-statusbar"><span class="iphone-time">9:41</span><div class="iphone-icons"><svg viewBox="0 0 24 24"><path d="M1 6l6 6 5-5 5 5 6-6"/></svg><svg viewBox="0 0 24 24"><path d="M5 12.5C5 8.36 8.36 5 12.5 5S20 8.36 20 12.5"/><circle cx="12.5" cy="12.5" r="2"/></svg><svg viewBox="0 0 24 24"><rect x="2" y="7" width="16" height="10" rx="2"/><path d="M22 11v2"/></svg></div></div><div class="iphone-chat-header"><div class="tg-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div><div class="wa-av" style="background:#5e696f;">ЕН</div><div><div class="wa-nm">Елена Н.</div><div class="wa-st">в сети</div></div></div><div class="iphone-chat-body"><div class="wa-in">Здравствуйте, машина при стирке очень сильно вибрирует, ходит по полу<span class="wa-t">11:00</span></div><div class="wa-out">Здравствуйте, скорее всего амортизаторы или транспортировочные болты. Оставьте адрес, приеду решу проблему<span class="wa-t">11:01</span></div><div class="wa-in">Адрес: пр. Героев Сталинграда, 22, подъезд 2<span class="wa-t">11:03</span></div><div class="wa-out">Напишите, пожалуйста, отзыв о проделанной работе</div><div class="wa-in">Максим заменил амортизаторы и проверил все крепления. Машина теперь стоит ровно, не скачет. Сделал всё аккуратно и быстро<span class="wa-t">14:50</span></div></div><div class="iphone-input"><div class="iphone-input-field">Сообщение</div></div></div></div></div>
+        <div class="iphone-wrap"><div class="iphone-frame"><div class="iphone-btn-power"></div><div class="iphone-btn-action"></div><div class="iphone-btn-vol1"></div><div class="iphone-btn-vol2"></div><div class="iphone-usbc"></div><div class="iphone-screen"><div class="iphone-island"></div><div class="iphone-statusbar"><span class="iphone-time">9:41</span><div class="iphone-icons"><svg viewBox="0 0 24 24"><path d="M1 6l6 6 5-5 5 5 6-6"/></svg><svg viewBox="0 0 24 24"><path d="M5 12.5C5 8.36 8.36 5 12.5 5S20 8.36 20 12.5"/><circle cx="12.5" cy="12.5" r="2"/></svg><svg viewBox="0 0 24 24"><rect x="2" y="7" width="16" height="10" rx="2"/><path d="M22 11v2"/></svg></div></div><div class="iphone-chat-header"><div class="tg-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div><div class="wa-av" style="background:#3c4145;">КМ</div><div><div class="wa-nm">Кирилл М.</div><div class="wa-st">в сети</div></div></div><div class="iphone-chat-body"><div class="wa-in">Здравствуйте, при стирке вытекает вода из-под дверцы<span class="wa-t">08:20</span></div><div class="wa-out">Здравствуйте, скорее всего манжета порвалась. Оставьте адрес, приеду решу проблему<span class="wa-t">08:21</span></div><div class="wa-in">Адрес: ул. Меньшикова, 3, набирайте напрямую<span class="wa-t">08:23</span></div><div class="wa-out">Напишите, пожалуйста, отзыв о проделанной работе</div><div class="wa-in">Максим заменил манжету, всё сделал аккуратно. Течи больше нет, работает как новая. Спасибо за оперативность<span class="wa-t">11:55</span></div></div><div class="iphone-input"><div class="iphone-input-field">Сообщение</div></div></div></div></div>
+        <div class="iphone-wrap"><div class="iphone-frame"><div class="iphone-btn-power"></div><div class="iphone-btn-action"></div><div class="iphone-btn-vol1"></div><div class="iphone-btn-vol2"></div><div class="iphone-usbc"></div><div class="iphone-screen"><div class="iphone-island"></div><div class="iphone-statusbar"><span class="iphone-time">9:41</span><div class="iphone-icons"><svg viewBox="0 0 24 24"><path d="M1 6l6 6 5-5 5 5 6-6"/></svg><svg viewBox="0 0 24 24"><path d="M5 12.5C5 8.36 8.36 5 12.5 5S20 8.36 20 12.5"/><circle cx="12.5" cy="12.5" r="2"/></svg><svg viewBox="0 0 24 24"><rect x="2" y="7" width="16" height="10" rx="2"/><path d="M22 11v2"/></svg></div></div><div class="iphone-chat-header"><div class="tg-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div><div class="wa-av" style="background:#418da9;">ТВ</div><div><div class="wa-nm">Татьяна В.</div><div class="wa-st">в сети</div></div></div><div class="iphone-chat-body"><div class="wa-in">Здравствуйте, машина стирает но не отжимает, бельё мокрое выходит<span class="wa-t">14:40</span></div><div class="wa-out">Здравствуйте, возможно щётки двигателя или сбой программы. Оставьте адрес, приеду решу проблему<span class="wa-t">14:41</span></div><div class="wa-in">Адрес: ул. Льва Толстого, 18, второй этаж<span class="wa-t">14:43</span></div><div class="wa-out">Напишите, пожалуйста, отзыв о проделанной работе</div><div class="wa-in">Максим быстро нашёл проблему — щётки износились. Заменил, отжим заработал. Цена нормальная, всё честно<span class="wa-t">18:10</span></div></div><div class="iphone-input"><div class="iphone-input-field">Сообщение</div></div></div></div></div>
+      </div>
+      <!-- GROUP 5 -->
+      <div class="phones-group" data-group="4">
+        <div class="iphone-wrap"><div class="iphone-frame"><div class="iphone-btn-power"></div><div class="iphone-btn-action"></div><div class="iphone-btn-vol1"></div><div class="iphone-btn-vol2"></div><div class="iphone-usbc"></div><div class="iphone-screen"><div class="iphone-island"></div><div class="iphone-statusbar"><span class="iphone-time">9:41</span><div class="iphone-icons"><svg viewBox="0 0 24 24"><path d="M1 6l6 6 5-5 5 5 6-6"/></svg><svg viewBox="0 0 24 24"><path d="M5 12.5C5 8.36 8.36 5 12.5 5S20 8.36 20 12.5"/><circle cx="12.5" cy="12.5" r="2"/></svg><svg viewBox="0 0 24 24"><rect x="2" y="7" width="16" height="10" rx="2"/><path d="M22 11v2"/></svg></div></div><div class="iphone-chat-header"><div class="tg-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div><div class="wa-av" style="background:#33708a;">ЛС</div><div><div class="wa-nm">Людмила С.</div><div class="wa-st">в сети</div></div></div><div class="iphone-chat-body"><div class="wa-in">Здравствуйте, машина воняет горелым после стирки<span class="wa-t">10:05</span></div><div class="wa-out">Здравствуйте, лучше не включайте — это могут быть щётки или нагреватель. Оставьте адрес, приеду решу проблему<span class="wa-t">10:06</span></div><div class="wa-in">Адрес: ул. Руднева, 41, позвоните, буду ждать<span class="wa-t">10:08</span></div><div class="wa-out">Напишите, пожалуйста, отзыв о проделанной работе</div><div class="wa-in">Максим приехал, нашёл причину запаха и всё починил. Больше не воняет. Хорошо что сразу обратилась, не затянула<span class="wa-t">13:30</span></div></div><div class="iphone-input"><div class="iphone-input-field">Сообщение</div></div></div></div></div>
+        <div class="iphone-wrap"><div class="iphone-frame"><div class="iphone-btn-power"></div><div class="iphone-btn-action"></div><div class="iphone-btn-vol1"></div><div class="iphone-btn-vol2"></div><div class="iphone-usbc"></div><div class="iphone-screen"><div class="iphone-island"></div><div class="iphone-statusbar"><span class="iphone-time">9:41</span><div class="iphone-icons"><svg viewBox="0 0 24 24"><path d="M1 6l6 6 5-5 5 5 6-6"/></svg><svg viewBox="0 0 24 24"><path d="M5 12.5C5 8.36 8.36 5 12.5 5S20 8.36 20 12.5"/><circle cx="12.5" cy="12.5" r="2"/></svg><svg viewBox="0 0 24 24"><rect x="2" y="7" width="16" height="10" rx="2"/><path d="M22 11v2"/></svg></div></div><div class="iphone-chat-header"><div class="tg-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div><div class="wa-av" style="background:#5e6f78;">АР</div><div><div class="wa-nm">Алексей Р.</div><div class="wa-st">в сети</div></div></div><div class="iphone-chat-body"><div class="wa-in">Здравствуйте, машина стирает очень долго, программа зависает на одном месте<span class="wa-t">16:15</span></div><div class="wa-out">Здравствуйте, скорее всего датчик или модуль управления. Оставьте адрес, приеду решу проблему<span class="wa-t">16:16</span></div><div class="wa-in">Адрес: ул. Острякова, 67, дозвонитесь заранее<span class="wa-t">16:18</span></div><div class="wa-out">Напишите, пожалуйста, отзыв о проделанной работе</div><div class="wa-in">Максим всё проверил, нашёл неисправный датчик. Заменил, машина работает нормально. Цену согласовал заранее, никаких сюрпризов<span class="wa-t">19:40</span></div></div><div class="iphone-input"><div class="iphone-input-field">Сообщение</div></div></div></div></div>
+        <div class="iphone-wrap"><div class="iphone-frame"><div class="iphone-btn-power"></div><div class="iphone-btn-action"></div><div class="iphone-btn-vol1"></div><div class="iphone-btn-vol2"></div><div class="iphone-usbc"></div><div class="iphone-screen"><div class="iphone-island"></div><div class="iphone-statusbar"><span class="iphone-time">9:41</span><div class="iphone-icons"><svg viewBox="0 0 24 24"><path d="M1 6l6 6 5-5 5 5 6-6"/></svg><svg viewBox="0 0 24 24"><path d="M5 12.5C5 8.36 8.36 5 12.5 5S20 8.36 20 12.5"/><circle cx="12.5" cy="12.5" r="2"/></svg><svg viewBox="0 0 24 24"><rect x="2" y="7" width="16" height="10" rx="2"/><path d="M22 11v2"/></svg></div></div><div class="iphone-chat-header"><div class="tg-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div><div class="wa-av" style="background:#3c4145;">ВК</div><div><div class="wa-nm">Вера К.</div><div class="wa-st">в сети</div></div></div><div class="iphone-chat-body"><div class="wa-in">Здравствуйте, машина скрипит и скрежещет при работе<span class="wa-t">09:55</span></div><div class="wa-out">Здравствуйте, может быть посторонний предмет или подшипник. Оставьте адрес, приеду решу проблему<span class="wa-t">09:56</span></div><div class="wa-in">Адрес: ул. Астана Кесаева, 9, код на домофоне 15К<span class="wa-t">09:58</span></div><div class="wa-out">Напишите, пожалуйста, отзыв о проделанной работе</div><div class="wa-in">Максим нашёл монету в барабане, достал, всё проверил. Скрежета больше нет. Быстро, аккуратно и недорого<span class="wa-t">13:05</span></div></div><div class="iphone-input"><div class="iphone-input-field">Сообщение</div></div></div></div></div>
+      </div>
+
+    </div><!-- /.phones-carousel -->
+
+    <div class="phone-nav">
+      <button class="phone-nav-btn" id="phone-prev" aria-label="Назад"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+      <div class="phone-dots">
+        <button class="phone-dot active" data-idx="0"></button>
+        <button class="phone-dot" data-idx="1"></button>
+        <button class="phone-dot" data-idx="2"></button>
+        <button class="phone-dot" data-idx="3"></button>
+        <button class="phone-dot" data-idx="4"></button>
+      </div>
+      <button class="phone-nav-btn" id="phone-next" aria-label="Вперёд"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
+    </div>
+
+    </div><!-- /.phones-section -->
+  </div>
+</section>
+
+<!-- ─── BLOCK 5: BRANDS ─── -->
+<section id="brands">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="section-tag"><span class="badge badge-blue">Марки техники</span></div>
+      <h2>Ремонтирую любую стиральную машину</h2>
+      <p class="section-sub">Работаю со всеми популярными брендами — от бюджетных до премиальных.</p>
+    </div>
+    <div class="brands-grid">
+      <div class="brand-card"><img src="logos/bosch_c.png" alt="Bosch"></div>
+      <div class="brand-card"><img src="logos/lg_t.png" alt="LG"></div>
+      <div class="brand-card"><img src="logos/samsung_c.png" alt="Samsung"></div>
+      <div class="brand-card"><img src="logos/whirlpool-logo.png" alt="Whirlpool"></div>
+      <div class="brand-card"><img src="logos/indesit_t.png" alt="Indesit"></div>
+      <div class="brand-card"><img src="logos/electrolux_c.png" alt="Electrolux"></div>
+      <div class="brand-card"><img src="logos/beko_t.png" alt="Beko"></div>
+      <div class="brand-card"><img src="logos/haier_t.png" alt="Haier"></div>
+      <div class="brand-card"><img src="logos/candy.svg" alt="Candy"></div>
+      <div class="brand-card"><img src="logos/hotpoint_t.png" alt="Hotpoint"></div>
+      <div class="brand-card"><img src="logos/zanussi2_c.png" alt="Zanussi"></div>
+      <div class="brand-card"><svg viewBox="0 4 110 28" xmlns="http://www.w3.org/2000/svg"><text x="55" y="26" text-anchor="middle" font-family="Arial" font-size="22" font-weight="400" fill="#4a4a4a">gorenje</text></svg></div>
+    </div>
+    <div class="brand-more">И другие марки</div>
+  </div>
+</section>
+
+
+<!-- ─── BLOCK 6: FAQ ─── -->
+<section id="faq">
+  <div class="container">
+    <div class="section-header">
+      <h2>Частые вопросы</h2>
+      <p class="section-sub">Отвечаю на то, что чаще всего спрашивают перед вызовом</p>
+    </div>
+    <div class="faq-big-list">
+
+      <div class="faq-big-item">
+        <button class="faq-big-btn"><span class="faq-big-n">01</span><span class="faq-big-q">Какие виды техники вы ремонтируете?</span><span class="faq-big-arrow"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+        <div class="faq-big-body"><div class="faq-big-inner"><p class="faq-big-a">Я специализируюсь на ремонте стиральных, сушильных и посудомоечных машин любых марок и моделей.</p></div></div>
+      </div>
+
+      <div class="faq-big-item">
+        <button class="faq-big-btn"><span class="faq-big-n">02</span><span class="faq-big-q">Сколько стоит ремонт и как формируется цена?</span><span class="faq-big-arrow"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+        <div class="faq-big-body"><div class="faq-big-inner"><p class="faq-big-a">Стоимость ремонта зависит от характера поломки, марки и модели техники, а также необходимости замены деталей. Я всегда озвучиваю цену после диагностики и согласовываю все работы заранее.</p></div></div>
+      </div>
+
+      <div class="faq-big-item">
+        <button class="faq-big-btn"><span class="faq-big-n">03</span><span class="faq-big-q">Сколько времени занимает ремонт?</span><span class="faq-big-arrow"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+        <div class="faq-big-body"><div class="faq-big-inner"><p class="faq-big-a">В большинстве случаев я устраняю неисправность в день обращения.</p></div></div>
+      </div>
+
+      <div class="faq-big-item">
+        <button class="faq-big-btn"><span class="faq-big-n">04</span><span class="faq-big-q">Даёте ли вы гарантию на ремонт?</span><span class="faq-big-arrow"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+        <div class="faq-big-body"><div class="faq-big-inner"><p class="faq-big-a">Да, я предоставляю сервисную гарантию до <strong>1 года</strong>.</p></div></div>
+      </div>
+
+      <div class="faq-big-item">
+        <button class="faq-big-btn"><span class="faq-big-n">05</span><span class="faq-big-q">Как записаться на ремонт?</span><span class="faq-big-arrow"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+        <div class="faq-big-body"><div class="faq-big-inner"><p class="faq-big-a">Вы можете позвонить мне напрямую или оставить заявку на сайте. Я быстро перезвоню, уточню детали и договоримся о времени визита, удобном для вас.</p></div></div>
+      </div>
+
+      <div class="faq-big-item">
+        <button class="faq-big-btn"><span class="faq-big-n">06</span><span class="faq-big-q">Что если машину нельзя починить?</span><span class="faq-big-arrow"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+      <div class="faq-big-body"><div class="faq-big-inner"><p class="faq-big-a">Честно скажу об этом и объясню причину. Также могу посоветовать, что выгоднее — ремонт или замена, и какую модель выбрать.</p></div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── BLOCK 5: FINAL CTA ─── -->
+<section id="contact">
+  <div class="container">
+
+    <div class="contact-grid">
+
+      <!-- Left: map -->
+      <div class="contact-map-wrap">
+        <div class="contact-map-title">Зона выезда</div>
+        <iframe class="contact-map-iframe" src="https://yandex.ru/map-widget/v1/?ll=33.5251%2C44.6167&z=11&l=map" loading="lazy" title="Карта зоны выезда"></iframe>
+        <div class="contact-info-card">
+          <div class="contact-info-title">Свяжитесь со мной</div>
+          <a href="tel:+79790576707" class="contact-info-row">
+            <div class="contact-info-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            </div>
+            <div>
+              <div class="contact-info-label">Телефон</div>
+              <div class="contact-info-value">+7 (979) 057-67-07</div>
+            </div>
+          </a>
+          <a href="https://max.ru/u/f9LHodD0cOJJmxi_N6UYsLgHm9n8i-9ykBo-tcnKHdYMdYANO9rpL_6Y83c" class="contact-info-row">
+            <div class="contact-info-icon">
+              <img src="max.svg.png" width="18" height="18" style="object-fit:contain;">
+            </div>
+            <div>
+              <div class="contact-info-label">Мессенджер MAX</div>
+              <div class="contact-info-value">Написать мастеру</div>
+            </div>
+          </a>
+          <a href="https://t.me/makkssut" class="contact-info-row">
+            <div class="contact-info-icon">
+              <img src="telega.png" width="18" height="18" style="object-fit:contain;">
+            </div>
+            <div>
+              <div class="contact-info-label">Telegram</div>
+              <div class="contact-info-value">Написать в Telegram</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: form -->
+      <div class="contact-right-col">
+        <div class="contact-form-card">
+          <div class="contact-form-tag">
+            <div class="blink"></div>
+            Акция — скидка до 20%
+          </div>
+          <h3>Оставьте заявку сейчас</h3>
+          <p class="sub">Перезвоню в течение 10 минут. Уточню поломку и подскажу ближайшее время визита.</p>
+
+          <div class="contact-timer-wrap">
+            <div class="contact-timer-label">Скидка до 20% действует ещё:</div>
+            <div class="contact-timer">
+              <div class="timer-unit"><span class="timer-val" id="c-h">00</span><span class="timer-lbl">часов</span></div>
+              <div class="timer-unit"><span class="timer-val" id="c-m">00</span><span class="timer-lbl">минут</span></div>
+              <div class="timer-unit"><span class="timer-val" id="c-s">00</span><span class="timer-lbl">секунд</span></div>
+            </div>
+          </div>
+
+          <div class="slots-warn">
+            <span>&#9888;</span> Осталось 3 места на сегодня
+          </div>
+
+          <div id="contact-form-wrap">
+            <div class="hp-field" aria-hidden="true">
+              <input type="text" id="hp-website" tabindex="-1" autocomplete="off">
+            </div>
+            <div class="form-field">
+              <label>Телефон <span class="form-required">*</span></label>
+              <input type="tel" id="contact-phone" placeholder="+7 (___) ___-__-__" inputmode="tel">
+            </div>
+            <div class="form-field">
+              <label>Имя <span style="color:var(--text-3);font-weight:400;">(необязательно)</span></label>
+              <input type="text" id="contact-name" placeholder="Как вас зовут">
+            </div>
+            <button class="btn btn-danger btn-full btn-lg" onclick="submitContactForm()" style="margin-top:4px;">
+              Оставить заявку — получить скидку до 20%
+            </button>
+            <p class="contact-form-note">
+              Нажимая кнопку, вы соглашаетесь на обработку персональных данных. Никакого спама — только связь по ремонту.
+            </p>
+          </div>
+          <div class="form-success" id="contact-success">
+            <div class="form-success-icon">&#10003;</div>
+            <h3>Отлично! Заявка принята</h3>
+            <p>Перезвоню вам в течение 10 минут. Никуда не нужно ехать — приеду сам.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ─── PRE-FOOTER LEGAL ─── -->
+<section id="prefooter">
+  <div class="container">
+    <div class="prefooter-inner">
+      <div class="prefooter-left">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--slate)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="52" height="52" style="flex-shrink:0;opacity:.6;"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+        <p>Любая информация, представленная на данном сайте, носит исключительно информационный характер и ни при каких условиях не является публичной офертой, определяемой положением статьи 437 ГК РФ. Отправляя сведения через любую форму на этом сайте, Вы даёте согласие на обработку Ваших персональных данных.</p>
+      </div>
+      <div class="prefooter-right">
+        <div class="prefooter-contacts-title">Контактная информация</div>
+        <div class="prefooter-contacts-name">Максим — частный мастер</div>
+        <div class="prefooter-contacts-phone">+7 (979) 057-67-07</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer id="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <span class="footer-copy">© 2025 Максим — частный мастер по ремонту стиральных машин</span>
+      <a href="#" class="footer-privacy">Политика конфиденциальности</a>
+    </div>
+  </div>
+</footer>
+
+<div class="lead-modal" id="leadModal" aria-hidden="true">
+  <div class="lead-dialog" role="dialog" aria-modal="true" aria-labelledby="leadTitle">
+    <button class="lead-close" type="button" data-lead-close aria-label="Закрыть">&times;</button>
+    <form class="lead-body" id="leadForm">
+      <h3 id="leadTitle">Оставьте заявку</h3>
+      <p>Я перезвоню в течение 5-10 минут, уточню поломку и подскажу ближайшее время визита.</p>
+      <div class="lead-field"><label for="leadPhone">Телефон *</label><input id="leadPhone" name="phone" type="tel" inputmode="tel" placeholder="+7 (___) ___-__-__" autocomplete="tel"></div>
+      <div class="lead-field"><label for="leadName">Имя</label><input id="leadName" name="name" type="text" placeholder="Как вас зовут" autocomplete="name"></div>
+      <div class="lead-field"><label for="leadProblem">Проблема</label><textarea id="leadProblem" name="problem" placeholder="Что случилось со стиральной машиной"></textarea></div>
+      <div class="lead-field"><label for="leadDistrict">Район / адрес</label><input id="leadDistrict" name="district" type="text" placeholder="Район или адрес"></div>
+      <div class="lead-error" id="leadError">Укажите телефон, чтобы я мог перезвонить.</div>
+      <button class="lead-submit" id="leadSubmit" type="submit">Отправить заявку</button>
+      <div class="lead-success" id="leadSuccess">Заявка отправлена. Я перезвоню в течение 5-10 минут.</div>
+    </form>
+  </div>
+</div>
+
+<div class="lead-modal" id="contactChoiceModal" aria-hidden="true">
+  <div class="lead-dialog" role="dialog" aria-modal="true" aria-labelledby="contactChoiceTitle">
+    <button class="lead-close" type="button" data-contact-close aria-label="Закрыть">&times;</button>
+    <div class="contact-choice-body">
+      <h3 id="contactChoiceTitle">Связаться с мастером</h3>
+      <p>Осталось 3 места на ремонт со скидкой до 20%. Выберите удобный способ связи.</p>
+      <a class="contact-choice-number" href="tel:+79790576707" data-direct-call>+7 (979) 057-67-07</a>
+      <div class="contact-choice-actions">
+        <a class="contact-choice-call" href="tel:+79790576707" data-direct-call>Позвонить сейчас</a>
+        <a class="contact-choice-max" href="https://max.ru/u/f9LHodD0cOJJmxi_N6UYsLgHm9n8i-9ykBo-tcnKHdYMdYANO9rpL_6Y83c" target="_blank" rel="noopener" data-contact-max>Написать в Max</a>
+        <a class="contact-choice-tg" href="https://t.me/makkssut" target="_blank" rel="noopener" data-contact-telegram>Написать в Telegram</a>
+        <a class="contact-choice-lead" href="#lead-form" data-open-lead data-form-type="choice_form">Оставить заявку</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="lead-modal promo-choice" id="promoChoiceModal" aria-hidden="true">
+  <div class="lead-dialog" role="dialog" aria-modal="true" aria-labelledby="promoChoiceTitle">
+    <button class="lead-close" type="button" data-promo-close aria-label="Закрыть">&times;</button>
+    <div class="contact-choice-body">
+      <h3 id="promoChoiceTitle">Осталось 3 места на ремонт со скидкой</h3>
+      <p>До конца дня можно закрепить скидку до 20%. Напишите или позвоните мастеру удобным способом.</p>
+      <div class="contact-choice-actions">
+        <a class="contact-choice-call" href="tel:+79790576707" data-direct-call>Позвонить</a>
+        <a class="contact-choice-max" href="https://max.ru/u/f9LHodD0cOJJmxi_N6UYsLgHm9n8i-9ykBo-tcnKHdYMdYANO9rpL_6Y83c" target="_blank" rel="noopener" data-contact-max>Написать в Max</a>
+        <a class="contact-choice-tg" href="https://t.me/makkssut" target="_blank" rel="noopener" data-contact-telegram>Telegram</a>
+        <a class="contact-choice-lead" href="#lead-form" data-open-lead data-form-type="promo_popup">Оставить заявку</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ── Video autoplay ──
+  (function () {
+    var v = document.querySelector('.hero-video');
+    if (!v) return;
+    v.play().catch(function () {
+      var startVideo = function () { v.play(); document.removeEventListener('click', startVideo); document.removeEventListener('scroll', startVideo); document.removeEventListener('touchstart', startVideo); };
+      document.addEventListener('click',      startVideo, { once: true });
+      document.addEventListener('scroll',     startVideo, { once: true });
+      document.addEventListener('touchstart', startVideo, { once: true });
+    });
+  })();
+
+  // ── Timer ──
+  (function () {
+    const DURATION = 23 * 3600 + 47 * 60 + 22; // seconds from page load
+    let remaining = DURATION;
+
+    function pad(n) { return String(n).padStart(2, '0'); }
+
+    function tick() {
+      if (remaining <= 0) return;
+      remaining--;
+      const h = Math.floor(remaining / 3600);
+      const m = Math.floor((remaining % 3600) / 60);
+      const s = remaining % 60;
+
+      const ids = [['c-h','c-m','c-s'],['h1-h','h1-m','h1-s']];
+      ids.forEach(([hid, mid, sid]) => {
+        const eh = document.getElementById(hid);
+        const em = document.getElementById(mid);
+        const es = document.getElementById(sid);
+        if (eh) eh.textContent = pad(h);
+        if (em) em.textContent = pad(m);
+        if (es) es.textContent = pad(s);
+      });
+    }
+    tick();
+    setInterval(tick, 1000);
+  })();
+
+  // ── Promo date (always today, DD.MM.YYYY) ──
+  (function () {
+    var el = document.getElementById('promo-date');
+    if (!el) return;
+    var d = new Date();
+    var dd = String(d.getDate()).padStart(2,'0');
+    var mm = String(d.getMonth() + 1).padStart(2,'0');
+    var yyyy = d.getFullYear();
+    el.textContent = dd + '.' + mm + '.' + yyyy;
+  })();
+
+  // ── Sticky header ──
+  window.addEventListener('scroll', function () {
+    const tb = document.getElementById('topbar');
+    if (window.scrollY > 40) tb.classList.add('scrolled');
+    else tb.classList.remove('scrolled');
+  });
+
+  // ── Hamburger menu ──
+  (function () {
+    const btn = document.getElementById('hamburger');
+    const nav = document.getElementById('mobile-nav');
+    if (!btn || !nav) return;
+    btn.addEventListener('click', function () {
+      btn.classList.toggle('open');
+      nav.classList.toggle('open');
+    });
+    // close on link click
+    nav.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        btn.classList.remove('open');
+        nav.classList.remove('open');
+      });
+    });
+    // close on scroll
+    window.addEventListener('scroll', function () {
+      if (nav.classList.contains('open')) {
+        btn.classList.remove('open');
+        nav.classList.remove('open');
+      }
+    }, { passive: true });
+  })();
+
+  // ── Fade-in observer ──
+  (function () {
+    const obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.fade-in').forEach(function (el) { obs.observe(el); });
+  })();
+
+  // ── Quiz logic ──
+  var quizStep = 1;
+  var quizAnswers = {};
+  var quizSelected = null;
+  var quizProblemOption = null;
+
+  function quizUpdateProgress() {
+    var total = 4;
+    var pct = (quizStep / total) * 100;
+    document.getElementById('quiz-progress-fill').style.width = pct + '%';
+    document.getElementById('quiz-progress-text').textContent = 'Вопрос ' + quizStep + ' из ' + total;
+  }
+
+  function quizNext() {
+    if (!quizSelected) return;
+    quizAnswers[quizStep] = quizSelected;
+
+    document.getElementById('quiz-step-' + quizStep).classList.add('hidden');
+
+    if (quizStep < 4) {
+      quizStep++;
+      document.getElementById('quiz-step-' + quizStep).classList.remove('hidden');
+      quizSelected = null;
+      document.getElementById('quiz-next').disabled = true;
+      quizUpdateProgress();
+      if (quizStep > 1) document.getElementById('quiz-back').classList.remove('hidden');
+    } else {
+      // Show result
+      document.getElementById('quiz-nav').classList.add('hidden');
+      document.getElementById('quiz-progress-fill').style.width = '100%';
+      document.getElementById('quiz-progress-text').textContent = 'Готово';
+      if (quizProblemOption) {
+        document.getElementById('quiz-result-title').textContent = quizProblemOption.getAttribute('data-result-title');
+        document.getElementById('quiz-result-price').textContent = quizProblemOption.getAttribute('data-result-price');
+        document.getElementById('quiz-result-text').textContent = quizProblemOption.getAttribute('data-result-text');
+      }
+      document.getElementById('quiz-result').classList.remove('hidden');
+    }
+  }
+
+  function quizBack() {
+    if (quizStep <= 1) return;
+    document.getElementById('quiz-step-' + quizStep).classList.add('hidden');
+    quizStep--;
+    document.getElementById('quiz-step-' + quizStep).classList.remove('hidden');
+    quizSelected = quizAnswers[quizStep] || null;
+    document.getElementById('quiz-next').disabled = !quizSelected;
+    quizUpdateProgress();
+    if (quizStep === 1) document.getElementById('quiz-back').classList.add('hidden');
+    // Re-mark previously selected
+    var opts = document.querySelectorAll('#quiz-step-' + quizStep + ' .quiz-option');
+    opts.forEach(function(o) { o.classList.remove('selected'); });
+    if (quizSelected) {
+      opts.forEach(function(o) {
+        if (o.textContent.trim().indexOf(quizSelected) !== -1) o.classList.add('selected');
+      });
+    }
+  }
+
+  document.querySelectorAll('.quiz-option').forEach(function (opt) {
+    opt.addEventListener('click', function () {
+      var q = this.getAttribute('data-q');
+      document.querySelectorAll('.quiz-option[data-q="' + q + '"]').forEach(function (o) {
+        o.classList.remove('selected');
+      });
+      this.classList.add('selected');
+      quizSelected = this.textContent.replace(/\s+/g, ' ').trim();
+      if (q === '1') quizProblemOption = this;
+      document.getElementById('quiz-next').disabled = false;
+    });
+  });
+
+  // ── Form submissions ──
+  function validatePhone(phone) {
+    return phone.replace(/\D/g, '').length >= 10;
+  }
+
+  function submitHeroForm() {
+    document.getElementById('leadModal')?.classList.add('open');
+  }
+
+  function submitContactForm() {
+    // Honeypot — если заполнено, это бот
+    if (document.getElementById('hp-website').value) return;
+    document.getElementById('leadModal')?.classList.add('open');
+  }
+
+  // ── Phone input formatting ──
+  ['hero-phone','contact-phone'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    el.addEventListener('input', function () {
+      this.style.borderColor = '';
+      var v = this.value.replace(/\D/g,'');
+      if (v.length === 0) { this.value = ''; return; }
+      if (v[0] === '7' || v[0] === '8') v = v.slice(1);
+      var r = '+7';
+      if (v.length > 0) r += ' (' + v.slice(0,3);
+      if (v.length >= 3) r += ') ' + v.slice(3,6);
+      if (v.length >= 6) r += '-' + v.slice(6,8);
+      if (v.length >= 8) r += '-' + v.slice(8,10);
+      this.value = r;
+    });
+  });
+  // ── Phone carousel ──
+  (function () {
+    var groups = document.querySelectorAll('.phones-group');
+    var dots   = document.querySelectorAll('.phone-dot');
+    var current = 0;
+    var total = groups.length;
+
+    function show(idx) {
+      idx = (idx + total) % total;
+      groups.forEach(function(g, i) { g.classList.toggle('active', i === idx); });
+      dots.forEach(function(d, i) { d.classList.toggle('active', i === idx); });
+      current = idx;
+    }
+
+    var btnPrev = document.getElementById('phone-prev');
+    var btnNext = document.getElementById('phone-next');
+    if (btnPrev) btnPrev.addEventListener('click', function() { show(current - 1); });
+    if (btnNext) btnNext.addEventListener('click', function() { show(current + 1); });
+
+    dots.forEach(function(d) {
+      d.addEventListener('click', function() { show(parseInt(d.dataset.idx)); });
+    });
+
+    // Touch swipe
+    var startX = 0;
+    var section = document.querySelector('.phones-section');
+    if (section) {
+      section.addEventListener('touchstart', function(e) { startX = e.touches[0].clientX; }, { passive: true });
+      section.addEventListener('touchend', function(e) {
+        var dx = e.changedTouches[0].clientX - startX;
+        if (Math.abs(dx) > 50) show(current + (dx < 0 ? 1 : -1));
+      });
+    }
+  })();
+
+  // ── FAQ accordion ──
+  document.querySelectorAll('.faq-big-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var item = btn.closest('.faq-big-item');
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-big-item.open').forEach(function(el) {
+        el.classList.remove('open');
+      });
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+</script>
+
+<!-- ── Floating call button ── -->
+<a href="tel:+79790576707" class="fab-call" aria-label="Позвонить мастеру">
+  <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.14 2.18 2 2 0 012.13 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.18 6.18l1.28-1.28a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+</a>
+
+<script>
+(function(){
+  const reviews=[
+    {name:'Марина К.',av:'МК',color:'#0b4f6b',in1:'Здравствуйте, машинка не сливает воду, срочно нужно сделать',out:'Здравствуйте, скорее всего засор или насос. Оставьте адрес, приеду решу проблему',addr:'Адрес: ул. Ленина, 25, позвоните как будете подъезжать',review:'Максим приехал быстро, сразу определил проблему и устранил. Вода теперь уходит нормально. Спасибо!',t:['10:14','10:15','10:16','13:20','14:20']},
+    {name:'Андрей С.',av:'АС',color:'#33708a',in1:'Здравствуйте, при отжиме сильно стучит, боюсь сломается',out:'Здравствуйте, похоже на амортизаторы или подшипник. Оставьте адрес, приеду решу проблему',addr:'Пр. Победы, 14, я выйду встречу у подъезда',review:'Мастер всё посмотрел, сделал аккуратно. Теперь машинка работает тихо, без стука. Доволен работой',t:['11:32','11:33','11:35','14:40','15:28']},
+    {name:'Светлана М.',av:'СМ',color:'#5e6f78',in1:'Здравствуйте, машинка не греет воду, бельё после стирки холодное',out:'Здравствуйте, скорее всего ТЭН или датчик. Приеду, проверю мультиметром и скажу цену',addr:'Ул. Гоголя, 8, наберите меня, скажу как пройти',review:'Максим быстро нашёл проблему, заменил ТЭН и всё проверил. Теперь стирает нормально',t:['09:05','09:06','09:08','12:30','13:10']},
+    {name:'Наталья В.',av:'НВ',color:'#3c4145',in1:'Здравствуйте, машинка течёт снизу, после стирки лужа',out:'Здравствуйте, возможно патрубок, манжета или насос. Оставьте адрес, приеду посмотрю',addr:'Ул. Хрусталева, 32, дом во дворе, лучше позвоните',review:'Максим устранил течь, показал где была проблема. Теперь сухо, машинка работает как надо',t:['14:20','14:21','14:23','17:10','17:45']},
+    {name:'Виктор С.',av:'ВС',color:'#274b63',in1:'Здравствуйте, машина показывает ошибку и не стирает',out:'Здравствуйте, нужно считать код ошибки и найти причину. Оставьте адрес, приеду решу проблему',addr:'Ул. Большая Морская, 43, третий этаж, квартира слева',review:'Максим считал ошибку, сразу понял в чём дело. Починил быстро, цену назвал до начала работы',t:['13:05','13:06','13:08','16:15','17:00']},
+    {name:'Оксана Т.',av:'ОТ',color:'#418da9',in1:'Здравствуйте, люк не открывается, бельё внутри',out:'Здравствуйте, это блокировка или замок. Оставьте адрес, приеду решу проблему',addr:'Ул. Советская, 12, жду дома весь день',review:'Максим приехал быстро, открыл машину и заменил замок. Бельё достали, всё работает нормально',t:['09:30','09:31','09:33','12:10','12:45']},
+    {name:'Дмитрий П.',av:'ДП',color:'#33708a',in1:'Здравствуйте, машина запускается, но воду не набирает',out:'Здравствуйте, скорее всего клапан набора воды или засор сетки. Оставьте адрес',addr:'Ул. Горпищенко, 55, позвоните заранее',review:'Максим разобрался с клапаном, всё почистил и заменил что нужно. Теперь вода набирается без проблем',t:['15:10','15:11','15:13','18:00','18:30']},
+    {name:'Елена Н.',av:'ЕН',color:'#5e696f',in1:'Здравствуйте, машина при стирке очень сильно вибрирует, ходит по полу',out:'Здравствуйте, скорее всего амортизаторы или установка. Оставьте адрес, приеду решу проблему',addr:'Пр. Героев Сталинграда, 22, подъезд 2',review:'Максим заменил амортизаторы и проверил крепления. Машина теперь стоит ровно, не скачет',t:['11:00','11:01','11:03','14:20','14:50']}
+  ];
+  function phone(r,i){
+    return `<article class="max-slide${i===0?' active':''}"><div class="max-phone"><div class="max-island"></div><div class="max-screen"><div class="max-status"><span>21:23</span><span class="max-icons">▮▮▮</span></div><div class="max-head"><span class="max-back">‹</span><div class="max-avatar" style="background:${r.color}">${r.av}</div><div><div class="max-name">${r.name}</div><div class="max-online">в сети</div></div><div class="max-actions"><span>☎</span><span>▭</span></div></div><div class="max-chat"><div class="max-bubble max-in">${r.in1}<span class="max-time">${r.t[0]}</span></div><div class="max-bubble max-out">${r.out}<span class="max-time">${r.t[1]} ✓✓</span></div><div class="max-bubble max-in">${r.addr}<span class="max-time">${r.t[2]}</span></div><div class="max-bubble max-out">Напишите, пожалуйста, отзыв о проделанной работе<span class="max-time">${r.t[3]} ✓✓</span></div><div class="max-bubble max-in">${r.review}<span class="max-time">${r.t[4]}</span></div></div><div class="max-input"><span>⌕</span><div class="max-input-field">Сообщение...</div><span>⌾</span></div></div></div></article>`;
+  }
+  document.querySelectorAll('[data-max-reviews]').forEach(section=>{
+    const track=section.querySelector('[data-max-track]');
+    const dotsBox=section.querySelector('[data-max-dots]');
+    track.innerHTML=reviews.map(phone).join('');
+    dotsBox.innerHTML=reviews.map((_,i)=>`<button class="max-dot${i===0?' active':''}" data-idx="${i}" aria-label="Отзыв ${i+1}"></button>`).join('');
+    const slides=[...track.children], dots=[...dotsBox.children];
+    let active=0;
+    function setActive(idx,scroll){
+      active=Math.max(0,Math.min(slides.length-1,idx));
+      slides.forEach((s,i)=>s.classList.toggle('active',i===active));
+      dots.forEach((d,i)=>d.classList.toggle('active',i===active));
+      if(scroll) slides[active].scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'});
+    }
+    track.addEventListener('scroll',()=>{
+      clearTimeout(track._maxTimer);
+      track._maxTimer=setTimeout(()=>{
+        const center=track.getBoundingClientRect().left+track.clientWidth/2;
+        let best=0,dist=Infinity;
+        slides.forEach((s,i)=>{const r=s.getBoundingClientRect();const d=Math.abs(r.left+r.width/2-center);if(d<dist){dist=d;best=i;}});
+        setActive(best,false);
+      },60);
+    });
+    section.querySelector('[data-max-prev]').addEventListener('click',()=>setActive(active-1,true));
+    section.querySelector('[data-max-next]').addEventListener('click',()=>setActive(active+1,true));
+    dots.forEach(d=>d.addEventListener('click',()=>setActive(Number(d.dataset.idx),true)));
+  });
+})();
+(function(){
+  document.querySelectorAll('[data-review-png]').forEach(section=>{
+    const track=section.querySelector('[data-review-track]');
+    const slides=[...track.children];
+    const dotsBox=section.querySelector('[data-review-dots]');
+    dotsBox.innerHTML=slides.map((_,i)=>`<button class="review-png-dot${i===0?' active':''}" data-idx="${i}" aria-label="Отзыв ${i+1}"></button>`).join('');
+    const dots=[...dotsBox.children];
+    let active=0;
+    function nearestIndex(){
+      const center=track.getBoundingClientRect().left+track.clientWidth/2;
+      let idx=0;
+      let best=Infinity;
+      slides.forEach((slide,i)=>{
+        const rect=slide.getBoundingClientRect();
+        const distance=Math.abs(rect.left+rect.width/2-center);
+        if(distance<best){best=distance;idx=i;}
+      });
+      return idx;
+    }
+    function scrollToActive(behavior){
+      const slide=slides[active];
+      const trackRect=track.getBoundingClientRect();
+      const slideRect=slide.getBoundingClientRect();
+      const target=track.scrollLeft+(slideRect.left-trackRect.left)-(track.clientWidth-slideRect.width)/2;
+      track._reviewProgrammatic=true;
+      track.scrollTo({left:target,behavior});
+      window.setTimeout(()=>{
+        track._reviewProgrammatic=false;
+      },behavior==='smooth'?520:0);
+    }
+    function setActive(idx,scroll){
+      active=Math.max(0,Math.min(slides.length-1,idx));
+      slides.forEach((s,i)=>s.classList.toggle('active',i===active));
+      dots.forEach((d,i)=>d.classList.toggle('active',i===active));
+      if(scroll) scrollToActive('smooth');
+      dots[active].scrollIntoView({behavior:scroll?'smooth':'auto',inline:'center',block:'nearest'});
+    }
+    track.addEventListener('scroll',()=>{
+      if(track._reviewProgrammatic)return;
+      clearTimeout(track._reviewTimer);
+      track._reviewTimer=setTimeout(()=>{
+        setActive(nearestIndex(),false);
+      },60);
+    });
+    section.querySelector('[data-review-prev]').addEventListener('click',()=>setActive(active-1,true));
+    section.querySelector('[data-review-next]').addEventListener('click',()=>setActive(active+1,true));
+    dots.forEach(d=>d.addEventListener('click',()=>setActive(Number(d.dataset.idx),true)));
+    setActive(0,false);
+    requestAnimationFrame(()=>scrollToActive('auto'));
+    window.addEventListener('load',()=>scrollToActive('auto'),{once:true});
+  });
+})();
+</script>
+<script>
+(function(){
+  const MASTER_PHONE="+79790576707";
+  const MASTER_PHONE_LABEL="+7 (979) 057-67-07";
+  const WEBHOOK_URL="PASTE_WEBHOOK_URL_HERE";
+  const YANDEX_COUNTER_ID=00000000;
+  const MAX_URL="https://max.ru/u/f9LHodD0cOJJmxi_N6UYsLgHm9n8i-9ykBo-tcnKHdYMdYANO9rpL_6Y83c";
+  const TELEGRAM_URL="https://t.me/makkssut";
+  const UTM_KEYS=["utm_source","utm_campaign","utm_content","utm_term"];
+  const PROMO_POPUP_KEY="repairPromoPopupClosedAt";
+  const PROMO_POPUP_SESSION_KEY="repairPromoPopupClosed";
+  const PROMO_POPUP_DELAY=15000;
+  let leadFormType="main_form";
+  let leadSubmitting=false;
+  let contactEngaged=false;
+  let pcQuizStep=1;
+  const pcQuizAnswers={};
+
+  function trackGoal(goal){
+    if(window.ym) ym(YANDEX_COUNTER_ID,"reachGoal",goal);
+  }
+  function saveUtm(){
+    const params=new URLSearchParams(location.search);
+    UTM_KEYS.forEach(key=>{
+      const value=params.get(key);
+      if(value) localStorage.setItem(key,value);
+    });
+  }
+  function getUtm(){
+    return UTM_KEYS.reduce((acc,key)=>{
+      acc[key]=localStorage.getItem(key)||"";
+      return acc;
+    },{});
+  }
+  function validPhone(value){
+    return (value||"").replace(/\D/g,"").length>=10;
+  }
+  function formatPhoneInput(input){
+    if(!input)return;
+    input.addEventListener("input",()=>{
+      input.style.borderColor="";
+      let v=input.value.replace(/\D/g,"");
+      if(v[0]==="7"||v[0]==="8")v=v.slice(1);
+      v=v.slice(0,10);
+      let out="+7";
+      if(v.length)out+=` (${v.slice(0,3)}`;
+      if(v.length>=3)out+=") ";
+      if(v.length>3)out+=v.slice(3,6);
+      if(v.length>6)out+=`-${v.slice(6,8)}`;
+      if(v.length>8)out+=`-${v.slice(8,10)}`;
+      input.value=v?out:"";
+    });
+  }
+  function buildPayload(data){
+    return Object.assign({
+      source:"site",
+      formType:"main_form",
+      name:"",
+      phone:"",
+      problem:"",
+      brand:"",
+      urgency:"",
+      district:"",
+      comment:"",
+      pageUrl:location.href,
+      createdAt:new Date().toISOString()
+    },getUtm(),data||{});
+  }
+  function submitLead(data){
+    const payload=buildPayload(data);
+    if(!validPhone(payload.phone)) return Promise.reject(new Error("phone_required"));
+    if(!WEBHOOK_URL || WEBHOOK_URL==="PASTE_WEBHOOK_URL_HERE"){
+      console.info("Lead payload prepared:",payload);
+      return Promise.resolve(payload);
+    }
+    return fetch(WEBHOOK_URL,{
+      method:"POST",
+      headers:{"Content-Type":"text/plain;charset=utf-8"},
+      body:JSON.stringify(payload)
+    }).then(response=>{
+      if(!response.ok) throw new Error("webhook_error");
+      return response;
+    });
+  }
+  function openLead(options){
+    const modal=document.getElementById("leadModal");
+    const form=document.getElementById("leadForm");
+    if(!modal||!form)return;
+    markContactEngaged();
+    closeContactChoice();
+    closePromoChoice(false);
+    leadFormType=options?.formType||"main_form";
+    form.reset();
+    document.getElementById("leadProblem").value=options?.problem||"";
+    document.getElementById("leadError").classList.remove("show");
+    document.getElementById("leadSuccess").classList.remove("show");
+    modal.classList.add("open");
+    modal.setAttribute("aria-hidden","false");
+    document.body.style.overflow="hidden";
+    document.getElementById("leadPhone").focus();
+    trackGoal("open_form");
+  }
+  function closeLead(){
+    const modal=document.getElementById("leadModal");
+    if(!modal)return;
+    modal.classList.remove("open");
+    modal.setAttribute("aria-hidden","true");
+    document.body.style.overflow="";
+  }
+  function openContactChoice(){
+    const modal=document.getElementById("contactChoiceModal");
+    if(!modal)return;
+    markContactEngaged();
+    closeLead();
+    closePromoChoice(false);
+    modal.classList.add("open");
+    modal.setAttribute("aria-hidden","false");
+    document.body.style.overflow="hidden";
+    trackGoal("open_contact_choice");
+  }
+  function closeContactChoice(){
+    const modal=document.getElementById("contactChoiceModal");
+    if(!modal)return;
+    modal.classList.remove("open");
+    modal.setAttribute("aria-hidden","true");
+    document.body.style.overflow="";
+  }
+  function markContactEngaged(){
+    contactEngaged=true;
+  }
+  function promoRecentlyClosed(){
+    if(sessionStorage.getItem(PROMO_POPUP_SESSION_KEY)==="1")return true;
+    const closedAt=Number(localStorage.getItem(PROMO_POPUP_KEY)||0);
+    return closedAt && Date.now()-closedAt<24*60*60*1000;
+  }
+  function closePromoChoice(remember=true){
+    const modal=document.getElementById("promoChoiceModal");
+    if(!modal)return;
+    const wasOpen=modal.classList.contains("open");
+    modal.classList.remove("open");
+    modal.setAttribute("aria-hidden","true");
+    if(remember&&wasOpen){
+      sessionStorage.setItem(PROMO_POPUP_SESSION_KEY,"1");
+      localStorage.setItem(PROMO_POPUP_KEY,String(Date.now()));
+    }
+    if(!document.querySelector(".lead-modal.open"))document.body.style.overflow="";
+  }
+  function openPromoChoice(){
+    const modal=document.getElementById("promoChoiceModal");
+    if(!modal||contactEngaged||promoRecentlyClosed())return;
+    modal.classList.add("open");
+    modal.setAttribute("aria-hidden","false");
+    document.body.style.overflow="hidden";
+    trackGoal("open_promo_popup");
+  }
+  function schedulePromoChoice(){
+    if(promoRecentlyClosed())return;
+    setTimeout(openPromoChoice,PROMO_POPUP_DELAY);
+  }
+  function updateContacts(){
+    document.querySelectorAll('a[href^="tel:"]').forEach(link=>link.href=`tel:${MASTER_PHONE}`);
+    document.querySelectorAll(".topbar-phone").forEach(link=>{
+      const text=[...link.childNodes].find(node=>node.nodeType===Node.TEXT_NODE&&node.textContent.trim());
+      if(text) text.textContent=` ${MASTER_PHONE_LABEL}`;
+    });
+    document.querySelectorAll(".contact-info-value,.prefooter-contacts-phone").forEach(el=>{
+      if(el.textContent.includes("+7")) el.textContent=MASTER_PHONE_LABEL;
+    });
+    document.querySelectorAll(".hero-btn-max,.contact-info-row[href*='max.ru'],.quiz-result-actions .btn-outline,[data-contact-max]").forEach(link=>link.href=MAX_URL);
+    document.querySelectorAll(".hero-btn-tg,.contact-info-row[href*='t.me'],[data-contact-telegram]").forEach(link=>link.href=TELEGRAM_URL);
+  }
+  function prepareQuiz(){
+    const step2=document.getElementById("quiz-step-2");
+    const step3=document.getElementById("quiz-step-3");
+    const step4=document.getElementById("quiz-step-4");
+    if(step2){
+      step2.querySelector(".quiz-question").textContent="Какая марка машинки?";
+      step2.querySelector(".quiz-options").innerHTML=["Bosch / Siemens","LG / Samsung","Indesit / Ariston","Electrolux / Zanussi","Другая марка"].map(text=>`<label class="quiz-option" data-q="2"><div class="opt-check"></div>${text}</label>`).join("");
+    }
+    if(step3){
+      step3.querySelector(".quiz-question").textContent="Насколько срочно нужен мастер?";
+      step3.querySelector(".quiz-options").innerHTML=["Сегодня","Завтра","В течение недели","Просто узнать стоимость"].map(text=>`<label class="quiz-option" data-q="3"><div class="opt-check"></div>${text}</label>`).join("");
+    }
+    if(step4){
+      step4.querySelector(".quiz-question").textContent="Район / удобное время";
+      step4.querySelector(".quiz-options").innerHTML=["Любой район сегодня","Сегодня вечером","Завтра, удобное время","Согласовать по телефону"].map(text=>`<label class="quiz-option" data-q="4"><div class="opt-check"></div>${text}</label>`).join("");
+    }
+    const result=document.getElementById("quiz-result");
+    if(result&&!document.getElementById("quizLeadPhone")){
+      result.insertAdjacentHTML("beforeend",`<div class="quiz-phone-wrap"><label for="quizLeadPhone">Телефон *</label><input id="quizLeadPhone" type="tel" inputmode="tel" placeholder="+7 (___) ___-__-__"><button class="quiz-submit-btn" id="quizSubmitLead" type="button">Отправить заявку</button><div class="lead-error" id="quizLeadError">Укажите телефон, чтобы я мог перезвонить.</div><div class="lead-success" id="quizLeadSuccess">Заявка отправлена. Я перезвоню в течение 5-10 минут.</div></div>`);
+      formatPhoneInput(document.getElementById("quizLeadPhone"));
+    }
+  }
+  function setQuizStep(step){
+    pcQuizStep=step;
+    for(let i=1;i<=4;i++){
+      document.getElementById(`quiz-step-${i}`)?.classList.toggle("hidden",i!==step);
+    }
+    document.getElementById("quiz-result")?.classList.toggle("hidden",step!==5);
+    const nav=document.getElementById("quiz-nav");
+    const next=document.getElementById("quiz-next");
+    const back=document.getElementById("quiz-back");
+    const progress=document.getElementById("quiz-progress-text");
+    const fill=document.getElementById("quiz-progress-fill");
+    if(step<5){
+      nav.classList.remove("hidden");
+      progress.textContent=`Вопрос ${step} из 4`;
+      fill.style.width=`${step*25}%`;
+      next.disabled=!pcQuizAnswers[step];
+      back.classList.toggle("hidden",step===1);
+    }else{
+      nav.classList.add("hidden");
+      progress.textContent="Готово";
+      fill.style.width="100%";
+    }
+  }
+  function submitQuiz(){
+    const phoneInput=document.getElementById("quizLeadPhone");
+    const error=document.getElementById("quizLeadError");
+    const success=document.getElementById("quizLeadSuccess");
+    const btn=document.getElementById("quizSubmitLead");
+    if(!validPhone(phoneInput.value)){
+      error.classList.add("show");
+      phoneInput.focus();
+      phoneInput.style.borderColor="var(--danger)";
+      return;
+    }
+    error.classList.remove("show");
+    btn.disabled=true;
+    btn.textContent="Отправляем...";
+    submitLead({
+      formType:"quiz",
+      phone:phoneInput.value,
+      problem:pcQuizAnswers[1]||"",
+      brand:pcQuizAnswers[2]||"",
+      urgency:pcQuizAnswers[3]||"",
+      district:pcQuizAnswers[4]||"",
+      comment:document.getElementById("quiz-result-price")?.textContent.trim()||""
+    }).then(()=>{
+      success.classList.add("show");
+      phoneInput.value="";
+      trackGoal("quiz_submit");
+    }).catch(()=>{
+      error.textContent="Не удалось отправить. Позвоните мастеру или попробуйте ещё раз.";
+      error.classList.add("show");
+    }).finally(()=>{
+      btn.disabled=false;
+      btn.textContent="Отправить заявку";
+    });
+  }
+
+  saveUtm();
+  updateContacts();
+  prepareQuiz();
+  formatPhoneInput(document.getElementById("leadPhone"));
+  schedulePromoChoice();
+
+  window.submitHeroForm=function(){ openLead({formType:"main_form"}); };
+  window.submitContactForm=function(){ openLead({formType:"main_form"}); };
+  window.quizNext=function(){};
+  window.quizBack=function(){};
+
+  document.addEventListener("click",event=>{
+    const telLink=event.target.closest('a[href^="tel:"]');
+    if(telLink){
+      markContactEngaged();
+      if(telLink.hasAttribute("data-direct-call")){
+        trackGoal("click_phone");
+      }else{
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        openContactChoice();
+      }
+      return;
+    }
+    if(event.target.closest(".hero-btn-tg,.contact-info-row[href*='t.me'],[data-contact-telegram]")){
+      markContactEngaged();
+      trackGoal("click_telegram");
+    }
+    if(event.target.closest(".hero-btn-max,.contact-info-row[href*='max.ru'],.quiz-result-actions .btn-outline,[data-contact-max]")){
+      markContactEngaged();
+      trackGoal("click_max");
+    }
+  },true);
+
+  document.addEventListener("click",event=>{
+    const priceCard=event.target.closest(".problem-card");
+    if(priceCard){
+      trackGoal("price_card_click");
+      return;
+    }
+    const contactOpener=event.target.closest("[data-open-contact]");
+    if(contactOpener){
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      openContactChoice();
+      return;
+    }
+    const opener=event.target.closest("[data-open-lead],.contact-form-card .btn-danger");
+    if(opener){
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      openLead({formType:opener.dataset.formType||"main_form"});
+    }
+  },true);
+
+  document.addEventListener("click",event=>{
+    const option=event.target.closest("#quiz-section .quiz-option");
+    if(option){
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      const q=Number(option.dataset.q);
+      document.querySelectorAll(`.quiz-option[data-q="${q}"]`).forEach(el=>el.classList.remove("selected"));
+      option.classList.add("selected");
+      pcQuizAnswers[q]=option.textContent.trim().replace(/\s+/g," ");
+      document.getElementById("quiz-next").disabled=false;
+      if(q===1) trackGoal("quiz_start");
+      return;
+    }
+    if(event.target.closest("#quiz-next")){
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      if(!pcQuizAnswers[pcQuizStep])return;
+      if(pcQuizStep===1){
+        const selected=document.querySelector('.quiz-option[data-q="1"].selected');
+        if(selected){
+          document.getElementById("quiz-result-title").textContent=selected.dataset.resultTitle||document.getElementById("quiz-result-title").textContent;
+          document.getElementById("quiz-result-price").textContent=selected.dataset.resultPrice||document.getElementById("quiz-result-price").textContent;
+          document.getElementById("quiz-result-text").textContent=selected.dataset.resultText||document.getElementById("quiz-result-text").textContent;
+        }
+      }
+      setQuizStep(pcQuizStep+1);
+      return;
+    }
+    if(event.target.closest("#quiz-back")){
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      setQuizStep(Math.max(1,pcQuizStep-1));
+      return;
+    }
+    if(event.target.closest("#quizSubmitLead")){
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      submitQuiz();
+    }
+  },true);
+
+  document.getElementById("leadForm")?.addEventListener("submit",event=>{
+    event.preventDefault();
+    if(leadSubmitting)return;
+    const phone=document.getElementById("leadPhone");
+    const error=document.getElementById("leadError");
+    const success=document.getElementById("leadSuccess");
+    const btn=document.getElementById("leadSubmit");
+    if(!validPhone(phone.value)){
+      error.textContent="Укажите телефон, чтобы я мог перезвонить.";
+      error.classList.add("show");
+      phone.focus();
+      phone.style.borderColor="var(--danger)";
+      return;
+    }
+    leadSubmitting=true;
+    error.classList.remove("show");
+    btn.disabled=true;
+    btn.textContent="Отправляем...";
+    submitLead({
+      formType:leadFormType,
+      name:document.getElementById("leadName").value.trim(),
+      phone:phone.value.trim(),
+      problem:document.getElementById("leadProblem").value.trim(),
+      district:document.getElementById("leadDistrict").value.trim()
+    }).then(()=>{
+      trackGoal("submit_form");
+      success.classList.add("show");
+      event.target.reset();
+      setTimeout(closeLead,1300);
+    }).catch(()=>{
+      error.textContent="Не удалось отправить. Позвоните мастеру или попробуйте ещё раз.";
+      error.classList.add("show");
+    }).finally(()=>{
+      leadSubmitting=false;
+      btn.disabled=false;
+      btn.textContent="Отправить заявку";
+    });
+  });
+
+  document.querySelectorAll("[data-lead-close]").forEach(btn=>btn.addEventListener("click",closeLead));
+  document.querySelectorAll("[data-contact-close]").forEach(btn=>btn.addEventListener("click",closeContactChoice));
+  document.querySelectorAll("[data-promo-close]").forEach(btn=>btn.addEventListener("click",()=>closePromoChoice(true)));
+  document.getElementById("leadModal")?.addEventListener("click",event=>{
+    if(event.target.id==="leadModal") closeLead();
+  });
+  document.getElementById("contactChoiceModal")?.addEventListener("click",event=>{
+    if(event.target.id==="contactChoiceModal") closeContactChoice();
+  });
+  document.getElementById("promoChoiceModal")?.addEventListener("click",event=>{
+    if(event.target.id==="promoChoiceModal") closePromoChoice(true);
+  });
+  document.addEventListener("keydown",event=>{
+    if(event.key==="Escape"){
+      closeLead();
+      closeContactChoice();
+      closePromoChoice(true);
+    }
+  });
+})();
+</script>
+</body>
+</html>
+
